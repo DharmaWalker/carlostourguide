@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
     <style>
         :root {
@@ -737,6 +738,218 @@
             line-height: 1.5;
         }
 
+        /* ── Custom Tour / Map Section ── */
+        .custom-tour-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .custom-tour-header {
+            background: var(--terracotta);
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .custom-tour-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23ffffff" fill-opacity="0.08"/></svg>');
+        }
+        .custom-tour-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+            position: relative;
+            z-index: 1;
+        }
+        .custom-tour-header p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 300;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #tourMap {
+            height: 400px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .map-panel {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid rgba(26,60,97,0.06);
+        }
+
+        .selected-destinations {
+            min-height: 48px;
+            margin-bottom: 1.2rem;
+        }
+
+        .dest-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dest-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--azulejo-blue);
+            color: white;
+            padding: 0.3rem 0.7rem 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .dest-chip button {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            font-size: 0.9rem;
+            line-height: 1;
+            padding: 0;
+            transition: color 0.2s;
+        }
+        .dest-chip button:hover { color: white; }
+
+        .no-selection-msg {
+            font-size: 0.88rem;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .quote-box {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 1.2rem;
+            border: 1.5px solid rgba(26,60,97,0.06);
+            display: none;
+        }
+        .quote-box.visible { display: block; }
+
+        .quote-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.88rem;
+            color: #555;
+            margin-bottom: 0.4rem;
+        }
+        .quote-divider {
+            border: none;
+            border-top: 1px solid rgba(26,60,97,0.1);
+            margin: 0.7rem 0;
+        }
+        .quote-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .quote-price-label {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--azulejo-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .quote-price-val {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--terracotta);
+            font-weight: 700;
+        }
+        .quote-rule {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 0.3rem;
+        }
+        .quote-disclaimer {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-top: 0.8rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .map-date-row {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .map-date-input {
+            flex: 1;
+            min-width: 140px;
+            padding: 0.7rem 0.9rem;
+            border: 1.5px solid rgba(26,60,97,0.15);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            outline: none;
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+        }
+        .map-date-input:focus { border-color: var(--azulejo-light); background: white; }
+
+        .btn-quote-wa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            width: 100%;
+            padding: 1.1rem;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .btn-quote-wa:hover { background: #1ebc5a; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.3); }
+        .btn-quote-wa:disabled { background: #aaa; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        /* Leaflet marker overrides */
+        .leaflet-marker-selected { filter: hue-rotate(180deg) brightness(1.2); }
+        .dest-popup { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; text-align: center; }
+        .dest-popup strong { display: block; color: var(--azulejo-blue); margin-bottom: 0.3rem; font-size: 0.9rem; }
+        .dest-popup button {
+            margin-top: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .popup-add-btn { background: var(--azulejo-blue); color: white; }
+        .popup-add-btn:hover { background: var(--azulejo-light); }
+        .popup-remove-btn { background: var(--terracotta); color: white; }
+        .popup-remove-btn:hover { background: #a8471e; }
+
+        @media (min-width: 601px) {
+            #tourMap { height: 500px; }
+        }
+
         /* ── Responsive ── */
         @media (max-width: 600px) {
             .hero h1 { font-size: 2rem; }
@@ -1026,6 +1239,53 @@
             </div>
         </div>
 
+        <!-- Custom Tour Map -->
+        <div class="custom-tour-section animate-on-scroll" id="customTourSection">
+            <div class="custom-tour-header">
+                <h2 data-i18n="customTourTitle">Build Your Own Tour</h2>
+                <p data-i18n="customTourSubtitle">Click destinations on the map to build a custom itinerary and get an instant price estimate.</p>
+            </div>
+            <div id="tourMap"></div>
+            <div class="map-panel">
+                <div class="selected-destinations" id="selectedDestinations">
+                    <div class="dest-chips" id="destChips"></div>
+                    <p class="no-selection-msg" id="noSelectionMsg" data-i18n="mapNoSelection">Click pins on the map to select destinations</p>
+                </div>
+
+                <div class="quote-box" id="quoteBox">
+                    <div class="quote-row">
+                        <span data-i18n="quoteDestinations">Destinations</span>
+                        <span id="quoteDestCount">—</span>
+                    </div>
+                    <div class="quote-row">
+                        <span data-i18n="quoteTotalDist">Estimated Distance</span>
+                        <span id="quoteDist">—</span>
+                    </div>
+                    <div class="quote-row">
+                        <span data-i18n="quoteSugDays">Suggested Days</span>
+                        <span id="quoteDays">—</span>
+                    </div>
+                    <hr class="quote-divider">
+                    <div class="quote-price-row">
+                        <span class="quote-price-label" data-i18n="quoteEstimate">Estimated Price</span>
+                        <span class="quote-price-val" id="quotePrice">—</span>
+                    </div>
+                    <p class="quote-rule" id="quoteRule"></p>
+                    <p class="quote-disclaimer" data-i18n="quoteDisclaimer">Approximate price — final quote on request</p>
+                </div>
+
+                <div class="map-date-row">
+                    <input type="date" id="mapStartDate" class="map-date-input" placeholder="Start date">
+                    <input type="date" id="mapEndDate" class="map-date-input" placeholder="End date">
+                </div>
+
+                <button class="btn-quote-wa" id="quoteWaBtn" onclick="sendQuoteWhatsApp()" disabled>
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-i18n="quoteWaBtn">Request Quote via WhatsApp</span>
+                </button>
+            </div>
+        </div>
+
         <!-- Common Info -->
         <div class="common-info animate-on-scroll">
             <h3 class="section-title" style="font-size:1.8rem;margin-bottom:2rem;" data-i18n="goodToKnow">Good to Know</h3>
@@ -1058,6 +1318,7 @@
         </p>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLcE=" crossorigin=""></script>
     <script>
     // ════════════════════════════════════════════
     //  i18n Translations
@@ -1128,6 +1389,20 @@
             confirmSumGroup: "Group",
             confirmSumTotal: "Tour Total",
             confirmSumDep:   "Deposit paid",
+            // Map / Custom Tour
+            customTourTitle:    "Build Your Own Tour",
+            customTourSubtitle: "Click destinations on the map to build a custom itinerary and get an instant price estimate.",
+            mapNoSelection:     "Click pins on the map to select destinations",
+            mapAdd:             "+ Add to tour",
+            mapRemove:          "Remove",
+            quoteDestinations:  "Destinations",
+            quoteTotalDist:     "Estimated Distance",
+            quoteSugDays:       "Suggested Days",
+            quoteEstimate:      "Estimated Price",
+            quoteRuleFlat:      "Day tour flat rate",
+            quoteRulePerKm:     "1€/km route estimate",
+            quoteDisclaimer:    "Approximate price — final quote on request",
+            quoteWaBtn:         "Request Quote via WhatsApp",
         },
         pt: {
             tagline:         "Guia Turístico Premium em Portugal & Espanha",
@@ -1190,6 +1465,20 @@
             confirmSumGroup: "Grupo",
             confirmSumTotal: "Total do Tour",
             confirmSumDep:   "Sinal pago",
+            // Map / Custom Tour
+            customTourTitle:    "Crie o Seu Tour",
+            customTourSubtitle: "Clique nos destinos no mapa para construir um itinerário personalizado e obter uma estimativa de preço.",
+            mapNoSelection:     "Clique nos pins para seleccionar destinos",
+            mapAdd:             "+ Adicionar ao tour",
+            mapRemove:          "Remover",
+            quoteDestinations:  "Destinos",
+            quoteTotalDist:     "Distância Estimada",
+            quoteSugDays:       "Dias Sugeridos",
+            quoteEstimate:      "Preço Estimado",
+            quoteRuleFlat:      "Tour de dia — tarifa fixa",
+            quoteRulePerKm:     "Estimativa por km percorrido",
+            quoteDisclaimer:    "Preço aproximado — orçamento final sob consulta",
+            quoteWaBtn:         "Pedir Orçamento via WhatsApp",
         },
         es: {
             tagline:         "Guía Turístico Premium en Portugal & España",
@@ -1252,6 +1541,20 @@
             confirmSumGroup: "Grupo",
             confirmSumTotal: "Total del Tour",
             confirmSumDep:   "Señal pagada",
+            // Map / Custom Tour
+            customTourTitle:    "Crea Tu Propio Tour",
+            customTourSubtitle: "Haz clic en los destinos del mapa para crear un itinerario personalizado y obtener un precio estimado.",
+            mapNoSelection:     "Haz clic en los pins para seleccionar destinos",
+            mapAdd:             "+ Añadir al tour",
+            mapRemove:          "Eliminar",
+            quoteDestinations:  "Destinos",
+            quoteTotalDist:     "Distancia Estimada",
+            quoteSugDays:       "Días Sugeridos",
+            quoteEstimate:      "Precio Estimado",
+            quoteRuleFlat:      "Tour de día — tarifa plana",
+            quoteRulePerKm:     "Estimación por km de ruta",
+            quoteDisclaimer:    "Precio aproximado — presupuesto final bajo consulta",
+            quoteWaBtn:         "Solicitar Presupuesto por WhatsApp",
         },
         it: {
             tagline:         "Guida Turistica Premium in Portogallo & Spagna",
@@ -1314,6 +1617,20 @@
             confirmSumGroup: "Gruppo",
             confirmSumTotal: "Totale Tour",
             confirmSumDep:   "Acconto pagato",
+            // Map / Custom Tour
+            customTourTitle:    "Costruisci il Tuo Tour",
+            customTourSubtitle: "Clicca le destinazioni sulla mappa per creare un itinerario personalizzato e ottenere un preventivo istantaneo.",
+            mapNoSelection:     "Clicca i segnaposto per selezionare le destinazioni",
+            mapAdd:             "+ Aggiungi al tour",
+            mapRemove:          "Rimuovi",
+            quoteDestinations:  "Destinazioni",
+            quoteTotalDist:     "Distanza Stimata",
+            quoteSugDays:       "Giorni Suggeriti",
+            quoteEstimate:      "Prezzo Stimato",
+            quoteRuleFlat:      "Tour giornaliero — tariffa fissa",
+            quoteRulePerKm:     "Stima per km di percorso",
+            quoteDisclaimer:    "Prezzo approssimativo — preventivo finale su richiesta",
+            quoteWaBtn:         "Richiedi Preventivo via WhatsApp",
         }
     };
 
@@ -1351,6 +1668,9 @@
         try { saved = localStorage.getItem('lang') || 'en'; } catch(e) {}
         setLang(saved);
 
+        // Init map
+        initMap();
+
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1379,6 +1699,197 @@
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeBookingModal(); } });
+
+    // ════════════════════════════════════════════
+    //  Interactive Map — Custom Tour Builder
+    // ════════════════════════════════════════════
+
+    const LISBON_COORDS = [38.7169, -9.1395]; // base for distance calc
+
+    const DESTINATIONS = [
+        // Portugal
+        { id:'lisboa',    name:'Lisboa',              country:'PT', lat:38.7169, lng:-9.1395 },
+        { id:'sintra',    name:'Sintra',              country:'PT', lat:38.7979, lng:-9.3892 },
+        { id:'cascais',   name:'Cascais',             country:'PT', lat:38.6979, lng:-9.4218 },
+        { id:'fatima',    name:'Fátima',              country:'PT', lat:39.6136, lng:-8.6636 },
+        { id:'batalha',   name:'Batalha',             country:'PT', lat:39.6596, lng:-8.8238 },
+        { id:'obidos',    name:'Óbidos',              country:'PT', lat:39.3620, lng:-9.1564 },
+        { id:'nazare',    name:'Nazaré',              country:'PT', lat:39.6018, lng:-9.0706 },
+        { id:'porto',     name:'Porto',               country:'PT', lat:41.1496, lng:-8.6109 },
+        { id:'evora',     name:'Évora',               country:'PT', lat:38.5711, lng:-7.9133 },
+        { id:'faro',      name:'Algarve (Faro)',      country:'PT', lat:37.0193, lng:-7.9304 },
+        { id:'coimbra',   name:'Coimbra',             country:'PT', lat:40.2033, lng:-8.4103 },
+        { id:'braga',     name:'Braga',               country:'PT', lat:41.5454, lng:-8.4265 },
+        { id:'guimaraes',name:'Guimarães',            country:'PT', lat:41.4425, lng:-8.2921 },
+        { id:'aveiro',    name:'Aveiro',              country:'PT', lat:40.6405, lng:-8.6538 },
+        { id:'tomar',     name:'Tomar',               country:'PT', lat:39.6019, lng:-8.4107 },
+        // Espanha
+        { id:'sevilla',   name:'Sevilla',             country:'ES', lat:37.3886, lng:-5.9823 },
+        { id:'madrid',    name:'Madrid',              country:'ES', lat:40.4168, lng:-3.7038 },
+        { id:'salamanca', name:'Salamanca',           country:'ES', lat:40.9701, lng:-5.6635 },
+        { id:'merida',    name:'Mérida',              country:'ES', lat:38.9166, lng:-6.3427 },
+        { id:'santiago',  name:'Santiago de Compostela', country:'ES', lat:42.8782, lng:-8.5448 },
+        { id:'toledo',    name:'Toledo',              country:'ES', lat:39.8628, lng:-4.0273 },
+        { id:'cordoba',   name:'Córdoba',             country:'ES', lat:37.8882, lng:-4.7794 },
+    ];
+
+    const FLAT_RATE      = 260;   // € flat when total distance ≤ threshold
+    const FLAT_THRESHOLD = 300;   // km round-trip threshold for flat rate
+    const RATE_PER_KM    = 1;     // €/km above threshold
+    const ROAD_FACTOR    = 1.3;   // straight-line × factor = road estimate
+    const MAX_KM_PER_DAY = 300;
+
+    let map, selectedIds = new Set(), markers = {};
+
+    function haversineKm(lat1, lng1, lat2, lng2) {
+        const R = 6371, dLat = (lat2-lat1)*Math.PI/180, dLng = (lng2-lng1)*Math.PI/180;
+        const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    }
+
+    function calcTotalDistance(ids) {
+        // Lisbon → dest1 → dest2 → ... → Lisbon (round-trip)
+        const points = [
+            LISBON_COORDS,
+            ...ids.map(id => { const d = DESTINATIONS.find(x => x.id===id); return [d.lat, d.lng]; }),
+            LISBON_COORDS
+        ];
+        let km = 0;
+        for (let i = 0; i < points.length-1; i++) {
+            km += haversineKm(points[i][0], points[i][1], points[i+1][0], points[i+1][1]);
+        }
+        return Math.round(km * ROAD_FACTOR);
+    }
+
+    function calcQuote(totalKm) {
+        if (totalKm <= FLAT_THRESHOLD) return { price: FLAT_RATE, rule: 'flat' };
+        const kmPrice = Math.round(totalKm * RATE_PER_KM);
+        return { price: Math.max(kmPrice, FLAT_RATE), rule: 'perkm' };
+    }
+
+    function updateMarkerStyle(id) {
+        const marker = markers[id];
+        if (!marker) return;
+        const selected = selectedIds.has(id);
+        const icon = L.divIcon({
+            className: '',
+            html: `<div style="
+                width:28px;height:28px;border-radius:50% 50% 50% 0;
+                background:${selected ? '#C85A32' : '#1A3C61'};
+                border:3px solid white;
+                box-shadow:0 2px 8px rgba(0,0,0,0.3);
+                transform:rotate(-45deg);
+                transition:all 0.3s;
+            "></div>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 28],
+            popupAnchor: [0, -30]
+        });
+        marker.setIcon(icon);
+    }
+
+    function toggleDestination(id) {
+        if (selectedIds.has(id)) {
+            selectedIds.delete(id);
+        } else {
+            selectedIds.add(id);
+        }
+        updateMarkerStyle(id);
+        markers[id].closePopup();
+        renderPanel();
+    }
+
+    function renderPanel() {
+        const ids     = [...selectedIds];
+        const chips   = document.getElementById('destChips');
+        const noMsg   = document.getElementById('noSelectionMsg');
+        const quoteBox = document.getElementById('quoteBox');
+        const waBtn   = document.getElementById('quoteWaBtn');
+        const lang    = document.documentElement.lang || 'en';
+        const t       = translations[lang] || translations.en;
+
+        chips.innerHTML = ids.map(id => {
+            const dest = DESTINATIONS.find(x => x.id === id);
+            return `<span class="dest-chip">${dest.name}<button onclick="toggleDestination('${id}')" aria-label="Remove">×</button></span>`;
+        }).join('');
+
+        noMsg.style.display = ids.length ? 'none' : 'block';
+        quoteBox.classList.toggle('visible', ids.length > 0);
+        waBtn.disabled = ids.length === 0;
+
+        if (ids.length === 0) return;
+
+        const totalKm  = calcTotalDistance(ids);
+        const { price, rule } = calcQuote(totalKm);
+        const days     = Math.max(1, Math.ceil(totalKm / MAX_KM_PER_DAY));
+
+        document.getElementById('quoteDestCount').textContent = ids.length;
+        document.getElementById('quoteDist').textContent      = `~${totalKm} km`;
+        document.getElementById('quoteDays').textContent      = days;
+        document.getElementById('quotePrice').textContent     = `${price}€`;
+        document.getElementById('quoteRule').textContent      =
+            rule === 'flat'
+                ? (t.quoteRuleFlat  || 'Day tour flat rate')
+                : (t.quoteRulePerKm || `1€/km × ${totalKm} km`);
+    }
+
+    function sendQuoteWhatsApp() {
+        const ids   = [...selectedIds];
+        if (!ids.length) return;
+        const lang  = document.documentElement.lang || 'en';
+        const t     = translations[lang] || translations.en;
+
+        const destNames  = ids.map(id => DESTINATIONS.find(x => x.id===id).name).join(', ');
+        const totalKm    = calcTotalDistance(ids);
+        const { price }  = calcQuote(totalKm);
+        const days       = Math.max(1, Math.ceil(totalKm / MAX_KM_PER_DAY));
+        const startDate  = document.getElementById('mapStartDate').value;
+        const endDate    = document.getElementById('mapEndDate').value;
+        const dateStr    = startDate ? `\n📅 Dates: ${startDate}${endDate ? ' → '+endDate : ''}` : '';
+
+        const msg = `Hello Carlos! I'd like a quote for a custom tour.\n\n📍 Destinations: ${destNames}\n📏 Est. Distance: ~${totalKm} km\n🗓️ Suggested Days: ${days}\n💶 Est. Price: €${price}${dateStr}\n\nPlease send me a final quote. Thank you!`;
+        window.open(`https://wa.me/351933302031?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    }
+
+    function initMap() {
+        map = L.map('tourMap', { zoomControl: true, scrollWheelZoom: false }).setView([39.6, -6.5], 6);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 18
+        }).addTo(map);
+
+        DESTINATIONS.forEach(dest => {
+            const icon = L.divIcon({
+                className: '',
+                html: `<div style="width:28px;height:28px;border-radius:50% 50% 50% 0;background:#1A3C61;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.3);transform:rotate(-45deg);"></div>`,
+                iconSize: [28, 28],
+                iconAnchor: [14, 28],
+                popupAnchor: [0, -30]
+            });
+
+            const marker = L.marker([dest.lat, dest.lng], { icon }).addTo(map);
+
+            marker.bindPopup(() => {
+                const selected = selectedIds.has(dest.id);
+                const lang = document.documentElement.lang || 'en';
+                const t    = translations[lang] || translations.en;
+                const div  = document.createElement('div');
+                div.className = 'dest-popup';
+                div.innerHTML = `
+                    <strong>${dest.name}</strong>
+                    <span style="font-size:0.75rem;color:#888;">${dest.country === 'PT' ? '🇵🇹 Portugal' : '🇪🇸 España'}</span><br>
+                    <button class="${selected ? 'popup-remove-btn' : 'popup-add-btn'}"
+                        onclick="toggleDestination('${dest.id}')">
+                        ${selected ? (t.mapRemove||'Remove') : (t.mapAdd||'+ Add to tour')}
+                    </button>`;
+                return div;
+            }, { maxWidth: 160 });
+
+            markers[dest.id] = marker;
+        });
+    }
+
 
     // ════════════════════════════════════════════
     //  Booking System
