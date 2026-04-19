@@ -1352,6 +1352,7 @@
                 <div class="modal-steps">
                     <div class="step-dot active" id="dot1"></div>
                     <div class="step-dot" id="dot2"></div>
+                    <div class="step-dot" id="dot3"></div>
                 </div>
 
                 <!-- STEP 1: Booking Form -->
@@ -1396,7 +1397,23 @@
                     <p class="note-small" data-i18n="paypalNote">You will be redirected to PayPal.me to complete the secure deposit payment. The remaining balance is paid on the day of the tour.</p>
                 </div>
 
-                <!-- STEP 2: Confirmation -->
+                <!-- STEP 2: Pending Payment -->
+                <div class="confirmation-step" id="pendingPaymentStep" style="display:none;">
+                    <div class="confirm-icon" style="background:linear-gradient(135deg,#f5a623,#e8961a);">⏳</div>
+                    <h3 class="confirm-title" data-i18n="pendingTitle">Complete Your Payment</h3>
+                    <p class="confirm-subtitle" data-i18n="pendingSubtitle">Complete your payment on PayPal, then click the button below to confirm your booking.</p>
+                    <div class="confirm-summary" id="pendingSummary"></div>
+                    <a href="#" id="paypalPendingBtn" class="btn-paypal" target="_blank" rel="noopener" style="margin-bottom:1rem;">
+                        <i class="fab fa-paypal"></i>
+                        <span data-i18n="paypalBtn">Pay Deposit via PayPal</span>
+                    </a>
+                    <button onclick="confirmPayment()" class="btn-book" style="width:100%;margin-top:0.5rem;">
+                        <i class="fas fa-check-circle"></i> <span data-i18n="paymentDoneBtn">I Have Completed Payment</span>
+                    </button>
+                    <p style="font-size:0.73rem;color:#aaa;text-align:center;margin-top:0.75rem;" data-i18n="pendingNote">Your booking is not confirmed until payment is completed.</p>
+                </div>
+
+                <!-- STEP 3: Confirmation -->
                 <div class="confirmation-step" id="confirmationStep">
                     <div class="confirm-icon">✓</div>
                     <h3 class="confirm-title" data-i18n="confirmTitle">Booking Requested!</h3>
@@ -1413,6 +1430,7 @@
                         <span data-i18n="waConfirmBtn">Send Details to Carlos</span>
                     </a>
                     <p class="note-small" data-i18n="confirmNote">Carlos will receive your booking details and confirm availability via WhatsApp.</p>
+                    <p class="note-small" style="margin-top:0.5rem;color:#b05e3a;" data-i18n="confirmPaymentWarning">If payment was not completed, please contact Carlos via WhatsApp to finalize your booking.</p>
                 </div>
             </div>
         </div>
@@ -1934,11 +1952,16 @@
             depositNote:     "This deposit will be deducted from the total tour price",
             paypalBtn:       "Pay Deposit via PayPal",
             paypalNote:      "You will be redirected to PayPal.me to complete the secure deposit payment. The remaining balance is paid on the day of the tour.",
+            pendingTitle:    "Complete Your Payment",
+            pendingSubtitle: "Complete your payment on PayPal, then click the button below to confirm your booking.",
+            paymentDoneBtn:  "I Have Completed Payment",
+            pendingNote:     "Your booking is not confirmed until payment is completed.",
             confirmTitle:    "Booking Requested!",
             confirmSubtitle: "Thank you! Carlos will confirm your tour within 24 hours.",
             calendarBtn:     "Add to Google Calendar",
             waConfirmBtn:    "Send Details to Carlos",
             confirmNote:     "Carlos will receive your booking details and confirm availability via WhatsApp.",
+            confirmPaymentWarning: "If payment was not completed, please contact Carlos via WhatsApp to finalize your booking.",
             confirmSumTour:  "Tour",
             confirmSumName:  "Name",
             confirmSumDate:  "Date",
@@ -2033,11 +2056,16 @@
             depositNote:     "Este valor será abatido no valor do serviço reservado",
             paypalBtn:       "Pagar Sinal via PayPal",
             paypalNote:      "Será redirecionado para o PayPal.me para concluir o pagamento do sinal. O valor restante é pago no dia do tour.",
+            pendingTitle:    "Complete o Pagamento",
+            pendingSubtitle: "Complete o pagamento no PayPal e depois clique no botão abaixo para confirmar a sua reserva.",
+            paymentDoneBtn:  "Já Efectuei o Pagamento",
+            pendingNote:     "A sua reserva não está confirmada até o pagamento ser concluído.",
             confirmTitle:    "Reserva Efectuada!",
             confirmSubtitle: "Obrigado! O Carlos confirmará o seu tour em 24 horas.",
             calendarBtn:     "Adicionar ao Google Calendar",
             waConfirmBtn:    "Enviar Detalhes ao Carlos",
             confirmNote:     "O Carlos receberá os detalhes da sua reserva e confirmará disponibilidade via WhatsApp.",
+            confirmPaymentWarning: "Se o pagamento não foi concluído, contacte o Carlos via WhatsApp para finalizar a sua reserva.",
             confirmSumTour:  "Tour",
             confirmSumName:  "Nome",
             confirmSumDate:  "Data",
@@ -2132,11 +2160,16 @@
             depositNote:     "Este valor se descontará del precio total del servicio reservado",
             paypalBtn:       "Pagar Señal vía PayPal",
             paypalNote:      "Serás redirigido a PayPal.me para completar el pago de la señal. El saldo restante se paga el día del tour.",
+            pendingTitle:    "Completa tu Pago",
+            pendingSubtitle: "Complete el pago en PayPal y luego haga clic en el botón de abajo para confirmar su reserva.",
+            paymentDoneBtn:  "Ya He Completado el Pago",
+            pendingNote:     "Tu reserva no está confirmada hasta que se complete el pago.",
             confirmTitle:    "¡Reserva Realizada!",
             confirmSubtitle: "¡Gracias! Carlos confirmará tu tour en 24 horas.",
             calendarBtn:     "Añadir a Google Calendar",
             waConfirmBtn:    "Enviar Detalles a Carlos",
             confirmNote:     "Carlos recibirá los detalles de tu reserva y confirmará disponibilidad por WhatsApp.",
+            confirmPaymentWarning: "Si el pago no se completó, contacta a Carlos por WhatsApp para finalizar tu reserva.",
             confirmSumTour:  "Tour",
             confirmSumName:  "Nombre",
             confirmSumDate:  "Fecha",
@@ -2231,11 +2264,16 @@
             depositNote:     "Questo importo verrà detratto dal prezzo totale del servizio prenotato",
             paypalBtn:       "Paga l'Acconto via PayPal",
             paypalNote:      "Sarai reindirizzato a PayPal.me per completare il pagamento dell'acconto. Il saldo restante si paga il giorno del tour.",
+            pendingTitle:    "Completa il Pagamento",
+            pendingSubtitle: "Completa il pagamento su PayPal, poi clicca il pulsante qui sotto per confermare la prenotazione.",
+            paymentDoneBtn:  "Ho Completato il Pagamento",
+            pendingNote:     "La tua prenotazione non è confermata fino al completamento del pagamento.",
             confirmTitle:    "Prenotazione Effettuata!",
             confirmSubtitle: "Grazie! Carlos confermerà il tuo tour entro 24 ore.",
             calendarBtn:     "Aggiungi a Google Calendar",
             waConfirmBtn:    "Invia Dettagli a Carlos",
             confirmNote:     "Carlos riceverà i dettagli della tua prenotazione e confermerà la disponibilità via WhatsApp.",
+            confirmPaymentWarning: "Se il pagamento non è stato completato, contatta Carlos via WhatsApp per finalizzare la prenotazione.",
             confirmSumTour:  "Tour",
             confirmSumName:  "Nome",
             confirmSumDate:  "Data",
@@ -2613,7 +2651,8 @@
         // Clear pax selection
         document.querySelectorAll('.pax-btn').forEach(b => b.classList.remove('selected'));
 
-        // Reset steps
+        // Reset steps and pending booking
+        _pendingBooking = null;
         showBookingStep(1);
 
         // Remove error states
@@ -2660,6 +2699,9 @@
         document.getElementById('paypalBtn').href = paypalUrl;
     }
 
+    // Stores booking data between steps
+    let _pendingBooking = null;
+
     function handlePayPalClick(e) {
         e.preventDefault();
 
@@ -2675,7 +2717,7 @@
         if (!name)  { document.getElementById('clientName').classList.add('error'); valid = false; }
         if (!email || !email.includes('@')) { document.getElementById('clientEmail').classList.add('error'); valid = false; }
         if (!date)  { document.getElementById('tourDate').classList.add('error'); valid = false; }
-        if (!currentPax) { valid = false; /* pax selector visual already guides user */ }
+        if (!currentPax) { valid = false; }
 
         if (!valid) return;
 
@@ -2683,10 +2725,33 @@
         const total   = tour.prices[currentPax];
         const deposit = tour.deposits[currentPax];
 
-        // Build PayPal.me link (username/amount)
+        // Store booking for later confirmation step
+        _pendingBooking = { tour, name, email, date, total, deposit };
+
+        // Open PayPal in new tab
         const paypalUsername = CARLOS_PAYPAL.split('@')[0];
         const paypalUrl = `https://www.paypal.com/paypalme/${paypalUsername}/${deposit}`;
         window.open(paypalUrl, '_blank', 'noopener');
+
+        // Set PayPal repeat button in pending step
+        document.getElementById('paypalPendingBtn').href = paypalUrl;
+
+        // Show pending payment step (step 2 of 3)
+        const lang = document.documentElement.lang || 'en';
+        const t    = translations[lang] || translations.en;
+        const dateFormatted = new Date(date).toLocaleDateString('en-GB', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+        document.getElementById('pendingSummary').innerHTML =
+            `<strong>${t.confirmSumTour  || 'Tour'}:</strong> ${tour.name}<br>` +
+            `<strong>${t.confirmSumName  || 'Name'}:</strong> ${name}<br>` +
+            `<strong>${t.confirmSumDate  || 'Date'}:</strong> ${dateFormatted}<br>` +
+            `<strong>${t.confirmSumGroup || 'Group'}:</strong> ${currentPax} ${t.paxLabel || 'pax'}<br>` +
+            `<strong>${t.confirmSumDep   || 'Deposit due'}:</strong> €${deposit}`;
+        showBookingStep(2);
+    }
+
+    function confirmPayment() {
+        if (!_pendingBooking) return;
+        const { tour, name, email, date, total, deposit } = _pendingBooking;
 
         // Build Google Calendar link
         const dateObj  = new Date(date + 'T09:00:00');
@@ -2716,26 +2781,36 @@
             `<strong>${t.confirmSumDep   || 'Deposit paid'}:</strong> €${deposit}`;
 
         // Show confirmation step
-        showBookingStep(2);
+        showBookingStep(3);
     }
 
     function showBookingStep(step) {
-        const formStep   = document.getElementById('bookingFormStep');
+        const formStep    = document.getElementById('bookingFormStep');
+        const pendingStep = document.getElementById('pendingPaymentStep');
         const confirmStep = document.getElementById('confirmationStep');
         const dot1 = document.getElementById('dot1');
         const dot2 = document.getElementById('dot2');
+        const dot3 = document.getElementById('dot3');
+
+        // Hide all
+        formStep.classList.add('hidden');
+        pendingStep.style.display = 'none';
+        confirmStep.classList.remove('active');
+        [dot1, dot2, dot3].forEach(d => d.className = 'step-dot');
 
         if (step === 1) {
             formStep.classList.remove('hidden');
-            confirmStep.classList.remove('active');
             dot1.className = 'step-dot active';
-            dot2.className = 'step-dot';
-        } else {
-            formStep.classList.add('hidden');
-            confirmStep.classList.add('active');
+        } else if (step === 2) {
+            pendingStep.style.display = '';
             dot1.className = 'step-dot done';
             dot2.className = 'step-dot active';
-            // Scroll modal to top
+            document.querySelector('.modal').scrollTop = 0;
+        } else {
+            confirmStep.classList.add('active');
+            dot1.className = 'step-dot done';
+            dot2.className = 'step-dot done';
+            dot3.className = 'step-dot active';
             document.querySelector('.modal').scrollTop = 0;
         }
     }
