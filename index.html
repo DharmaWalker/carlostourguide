@@ -1390,27 +1390,19 @@
                         <p style="font-size:0.72rem;color:#888;text-align:center;margin-top:0.5rem;" data-i18n="depositNote">This deposit will be deducted from the total tour price</p>
                     </div>
 
-                    <a href="#" id="paypalBtn" class="btn-paypal" target="_blank" rel="noopener" onclick="handlePayPalClick(event)">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.316 2.42 1.016 4.223-.012.073-.023.147-.038.225-.965 5.144-4.256 6.927-8.47 6.927H9.923a.955.955 0 0 0-.943.806L7.076 21.337zm10.56-14.26a4.04 4.04 0 0 0-.09-.512C17.008 4.73 15.56 3.9 12.9 3.9H7.16l-2.45 14.9h3.096l.91-5.8a1.61 1.61 0 0 1 1.59-1.364h1.737c3.442 0 5.982-1.4 6.747-5.497l.045-.062z"/></svg>
-                        <span data-i18n="paypalBtn">Pay Deposit via PayPal</span>
-                    </a>
-                    <p class="note-small" data-i18n="paypalNote">You will be redirected to PayPal.me to complete the secure deposit payment. The remaining balance is paid on the day of the tour.</p>
+                    <button class="btn-book" style="width:100%;margin-top:0.5rem;" onclick="proceedToPayment()">
+                        <i class="fas fa-lock"></i> <span data-i18n="proceedBtn">Continue to Secure Payment</span>
+                    </button>
+                    <p class="note-small" data-i18n="paypalNote">You will be redirected to complete a secure €50 deposit via PayPal. The remaining balance is paid on the day of the tour.</p>
                 </div>
 
-                <!-- STEP 2: Pending Payment -->
+                <!-- STEP 2: PayPal SDK Payment -->
                 <div class="confirmation-step" id="pendingPaymentStep" style="display:none;">
-                    <div class="confirm-icon" style="background:linear-gradient(135deg,#f5a623,#e8961a);">⏳</div>
-                    <h3 class="confirm-title" data-i18n="pendingTitle">Complete Your Payment</h3>
-                    <p class="confirm-subtitle" data-i18n="pendingSubtitle">Complete your payment on PayPal, then click the button below to confirm your booking.</p>
-                    <div class="confirm-summary" id="pendingSummary"></div>
-                    <a href="#" id="paypalPendingBtn" class="btn-paypal" target="_blank" rel="noopener" style="margin-bottom:1rem;">
-                        <i class="fab fa-paypal"></i>
-                        <span data-i18n="paypalBtn">Pay Deposit via PayPal</span>
-                    </a>
-                    <button onclick="confirmPayment()" class="btn-book" style="width:100%;margin-top:0.5rem;">
-                        <i class="fas fa-check-circle"></i> <span data-i18n="paymentDoneBtn">I Have Completed Payment</span>
-                    </button>
-                    <p style="font-size:0.73rem;color:#aaa;text-align:center;margin-top:0.75rem;" data-i18n="pendingNote">Your booking is not confirmed until payment is completed.</p>
+                    <h3 class="confirm-title" style="margin-bottom:0.75rem;" data-i18n="paypalSdkTitle">Complete Your Payment</h3>
+                    <div class="confirm-summary" id="pendingSummary" style="margin-bottom:1.25rem;"></div>
+                    <div id="paypal-button-container" style="min-height:50px;"></div>
+                    <div id="paypal-msg" style="display:none;margin-top:0.75rem;padding:0.6rem 1rem;border-radius:8px;font-size:0.85rem;text-align:center;"></div>
+                    <button onclick="showBookingStep(1)" style="background:none;border:none;color:#888;font-size:0.82rem;cursor:pointer;margin-top:0.75rem;text-decoration:underline;" data-i18n="backBtn">← Go back</button>
                 </div>
 
                 <!-- STEP 3: Confirmation -->
@@ -1430,7 +1422,6 @@
                         <span data-i18n="waConfirmBtn">Send Details to Carlos</span>
                     </a>
                     <p class="note-small" data-i18n="confirmNote">Carlos will receive your booking details and confirm availability via WhatsApp.</p>
-                    <p class="note-small" style="margin-top:0.5rem;color:#b05e3a;" data-i18n="confirmPaymentWarning">If payment was not completed, please contact Carlos via WhatsApp to finalize your booking.</p>
                 </div>
             </div>
         </div>
@@ -1951,17 +1942,17 @@
             depositDue:      "Amount Due Now (Deposit)",
             depositNote:     "This deposit will be deducted from the total tour price",
             paypalBtn:       "Pay Deposit via PayPal",
-            paypalNote:      "You will be redirected to PayPal.me to complete the secure deposit payment. The remaining balance is paid on the day of the tour.",
-            pendingTitle:    "Complete Your Payment",
-            pendingSubtitle: "Complete your payment on PayPal, then click the button below to confirm your booking.",
-            paymentDoneBtn:  "I Have Completed Payment",
-            pendingNote:     "Your booking is not confirmed until payment is completed.",
+            paypalNote:      "A secure €50 deposit is required to confirm your booking. The remaining balance is paid on the day of the tour.",
+            proceedBtn:      "Continue to Secure Payment",
+            paypalSdkTitle:  "Complete Your Payment",
+            backBtn:         "← Go back",
+            paypalCancel:    "Payment cancelled. You can try again.",
+            paypalError:     "Payment error. Please try again or contact Carlos via WhatsApp.",
             confirmTitle:    "Booking Requested!",
             confirmSubtitle: "Thank you! Carlos will confirm your tour within 24 hours.",
             calendarBtn:     "Add to Google Calendar",
             waConfirmBtn:    "Send Details to Carlos",
             confirmNote:     "Carlos will receive your booking details and confirm availability via WhatsApp.",
-            confirmPaymentWarning: "If payment was not completed, please contact Carlos via WhatsApp to finalize your booking.",
             confirmSumTour:  "Tour",
             confirmSumName:  "Name",
             confirmSumDate:  "Date",
@@ -2055,17 +2046,17 @@
             depositDue:      "Valor a Pagar Agora (Sinal)",
             depositNote:     "Este valor será abatido no valor do serviço reservado",
             paypalBtn:       "Pagar Sinal via PayPal",
-            paypalNote:      "Será redirecionado para o PayPal.me para concluir o pagamento do sinal. O valor restante é pago no dia do tour.",
-            pendingTitle:    "Complete o Pagamento",
-            pendingSubtitle: "Complete o pagamento no PayPal e depois clique no botão abaixo para confirmar a sua reserva.",
-            paymentDoneBtn:  "Já Efectuei o Pagamento",
-            pendingNote:     "A sua reserva não está confirmada até o pagamento ser concluído.",
+            paypalNote:      "É necessário um sinal de €50 para confirmar a sua reserva. O valor restante é pago no dia do tour.",
+            proceedBtn:      "Continuar para Pagamento Seguro",
+            paypalSdkTitle:  "Complete o Pagamento",
+            backBtn:         "← Voltar",
+            paypalCancel:    "Pagamento cancelado. Pode tentar novamente.",
+            paypalError:     "Erro no pagamento. Tente novamente ou contacte o Carlos via WhatsApp.",
             confirmTitle:    "Reserva Efectuada!",
             confirmSubtitle: "Obrigado! O Carlos confirmará o seu tour em 24 horas.",
             calendarBtn:     "Adicionar ao Google Calendar",
             waConfirmBtn:    "Enviar Detalhes ao Carlos",
             confirmNote:     "O Carlos receberá os detalhes da sua reserva e confirmará disponibilidade via WhatsApp.",
-            confirmPaymentWarning: "Se o pagamento não foi concluído, contacte o Carlos via WhatsApp para finalizar a sua reserva.",
             confirmSumTour:  "Tour",
             confirmSumName:  "Nome",
             confirmSumDate:  "Data",
@@ -2159,17 +2150,17 @@
             depositDue:      "Importe a Pagar Ahora (Señal)",
             depositNote:     "Este valor se descontará del precio total del servicio reservado",
             paypalBtn:       "Pagar Señal vía PayPal",
-            paypalNote:      "Serás redirigido a PayPal.me para completar el pago de la señal. El saldo restante se paga el día del tour.",
-            pendingTitle:    "Completa tu Pago",
-            pendingSubtitle: "Complete el pago en PayPal y luego haga clic en el botón de abajo para confirmar su reserva.",
-            paymentDoneBtn:  "Ya He Completado el Pago",
-            pendingNote:     "Tu reserva no está confirmada hasta que se complete el pago.",
+            paypalNote:      "Se requiere un depósito de €50 para confirmar tu reserva. El saldo restante se paga el día del tour.",
+            proceedBtn:      "Continuar al Pago Seguro",
+            paypalSdkTitle:  "Completa tu Pago",
+            backBtn:         "← Volver",
+            paypalCancel:    "Pago cancelado. Puedes intentarlo de nuevo.",
+            paypalError:     "Error en el pago. Inténtalo de nuevo o contacta a Carlos por WhatsApp.",
             confirmTitle:    "¡Reserva Realizada!",
             confirmSubtitle: "¡Gracias! Carlos confirmará tu tour en 24 horas.",
             calendarBtn:     "Añadir a Google Calendar",
             waConfirmBtn:    "Enviar Detalles a Carlos",
             confirmNote:     "Carlos recibirá los detalles de tu reserva y confirmará disponibilidad por WhatsApp.",
-            confirmPaymentWarning: "Si el pago no se completó, contacta a Carlos por WhatsApp para finalizar tu reserva.",
             confirmSumTour:  "Tour",
             confirmSumName:  "Nombre",
             confirmSumDate:  "Fecha",
@@ -2263,17 +2254,17 @@
             depositDue:      "Importo da Pagare Ora (Acconto)",
             depositNote:     "Questo importo verrà detratto dal prezzo totale del servizio prenotato",
             paypalBtn:       "Paga l'Acconto via PayPal",
-            paypalNote:      "Sarai reindirizzato a PayPal.me per completare il pagamento dell'acconto. Il saldo restante si paga il giorno del tour.",
-            pendingTitle:    "Completa il Pagamento",
-            pendingSubtitle: "Completa il pagamento su PayPal, poi clicca il pulsante qui sotto per confermare la prenotazione.",
-            paymentDoneBtn:  "Ho Completato il Pagamento",
-            pendingNote:     "La tua prenotazione non è confermata fino al completamento del pagamento.",
+            paypalNote:      "È richiesto un acconto di €50 per confermare la prenotazione. Il saldo restante si paga il giorno del tour.",
+            proceedBtn:      "Continua al Pagamento Sicuro",
+            paypalSdkTitle:  "Completa il Pagamento",
+            backBtn:         "← Torna indietro",
+            paypalCancel:    "Pagamento annullato. Puoi riprovare.",
+            paypalError:     "Errore nel pagamento. Riprova o contatta Carlos via WhatsApp.",
             confirmTitle:    "Prenotazione Effettuata!",
             confirmSubtitle: "Grazie! Carlos confermerà il tuo tour entro 24 ore.",
             calendarBtn:     "Aggiungi a Google Calendar",
             waConfirmBtn:    "Invia Dettagli a Carlos",
             confirmNote:     "Carlos riceverà i dettagli della tua prenotazione e confermerà la disponibilità via WhatsApp.",
-            confirmPaymentWarning: "Se il pagamento non è stato completato, contatta Carlos via WhatsApp per finalizzare la prenotazione.",
             confirmSumTour:  "Tour",
             confirmSumName:  "Nome",
             confirmSumDate:  "Data",
@@ -2647,7 +2638,6 @@
         document.getElementById('tourDate').value    = '';
         document.getElementById('tourTotalDisplay').textContent = '—';
         document.getElementById('depositDisplay').textContent   = '—';
-        document.getElementById('paypalBtn').href = '#';
 
         // Set minimum date to today
         const today = new Date().toISOString().split('T')[0];
@@ -2694,22 +2684,14 @@
         const tour    = TOUR_DATA[currentTour];
         const total   = tour.prices[currentPax];
         const deposit = tour.deposits[currentPax];
-
         document.getElementById('tourTotalDisplay').textContent = `€${total}`;
         document.getElementById('depositDisplay').textContent   = `€${deposit}`;
-
-        // Build PayPal.me link
-        const desc = encodeURIComponent(`Deposit - ${tour.name} ${currentPax} Pax`);
-        const paypalUrl = `https://www.paypal.com/paypalme/${CARLOS_PAYPAL.split('@')[0]}/${deposit}EUR`;
-        document.getElementById('paypalBtn').href = paypalUrl;
     }
 
     // Stores booking data between steps
     let _pendingBooking = null;
 
-    function handlePayPalClick(e) {
-        e.preventDefault();
-
+    function proceedToPayment() {
         // Validate form
         const name  = document.getElementById('clientName').value.trim();
         const email = document.getElementById('clientEmail').value.trim();
@@ -2723,25 +2705,16 @@
         if (!email || !email.includes('@')) { document.getElementById('clientEmail').classList.add('error'); valid = false; }
         if (!date)  { document.getElementById('tourDate').classList.add('error'); valid = false; }
         if (!currentPax) { valid = false; }
-
         if (!valid) return;
 
         const tour    = TOUR_DATA[currentTour];
         const total   = tour.prices[currentPax];
         const deposit = tour.deposits[currentPax];
 
-        // Store booking for later confirmation step
+        // Store booking
         _pendingBooking = { tour, name, email, date, total, deposit };
 
-        // Open PayPal in new tab
-        const paypalUsername = CARLOS_PAYPAL.split('@')[0];
-        const paypalUrl = `https://www.paypal.com/paypalme/${paypalUsername}/${deposit}`;
-        window.open(paypalUrl, '_blank', 'noopener');
-
-        // Set PayPal repeat button in pending step
-        document.getElementById('paypalPendingBtn').href = paypalUrl;
-
-        // Show pending payment step (step 2 of 3)
+        // Build pending summary
         const lang = document.documentElement.lang || 'en';
         const t    = translations[lang] || translations.en;
         const dateFormatted = new Date(date).toLocaleDateString('en-GB', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
@@ -2751,10 +2724,63 @@
             `<strong>${t.confirmSumDate  || 'Date'}:</strong> ${dateFormatted}<br>` +
             `<strong>${t.confirmSumGroup || 'Group'}:</strong> ${paxDisplay(currentPax)} ${t.paxLabel || 'pax'}<br>` +
             `<strong>${t.confirmSumDep   || 'Deposit due'}:</strong> €${deposit}`;
+
         showBookingStep(2);
+
+        // Render PayPal buttons (clear container first to avoid duplicate renders)
+        const container = document.getElementById('paypal-button-container');
+        container.innerHTML = '';
+        document.getElementById('paypal-msg').style.display = 'none';
+
+        if (typeof paypal === 'undefined') {
+            showPayPalMsg('PayPal SDK not loaded. Please refresh the page.', 'error');
+            return;
+        }
+
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color:  'blue',
+                shape:  'rect',
+                label:  'pay'
+            },
+            createOrder: function(data, actions) {
+                const b = _pendingBooking;
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: { value: String(b.deposit), currency_code: 'EUR' },
+                        description: `Deposit - ${b.tour.name} ${paxDisplay(currentPax)} Pax`
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    showConfirmation();
+                });
+            },
+            onCancel: function() {
+                const lang = document.documentElement.lang || 'en';
+                const t = translations[lang] || translations.en;
+                showPayPalMsg(t.paypalCancel || 'Payment cancelled. You can try again.', 'cancel');
+            },
+            onError: function(err) {
+                const lang = document.documentElement.lang || 'en';
+                const t = translations[lang] || translations.en;
+                showPayPalMsg(t.paypalError || 'Payment error. Please try again or contact Carlos via WhatsApp.', 'error');
+            }
+        }).render('#paypal-button-container');
     }
 
-    function confirmPayment() {
+    function showPayPalMsg(text, type) {
+        const el = document.getElementById('paypal-msg');
+        el.textContent = text;
+        el.style.display = 'block';
+        el.style.background = type === 'error' ? '#fdecea' : '#fff8e1';
+        el.style.color = type === 'error' ? '#c0392b' : '#856404';
+        el.style.border = `1px solid ${type === 'error' ? '#f5c6cb' : '#ffc107'}`;
+    }
+
+    function showConfirmation() {
         if (!_pendingBooking) return;
         const { tour, name, email, date, total, deposit } = _pendingBooking;
 
@@ -2785,7 +2811,6 @@
             `<strong>${t.confirmSumTotal || 'Total'}:</strong> €${total}<br>` +
             `<strong>${t.confirmSumDep   || 'Deposit paid'}:</strong> €${deposit}`;
 
-        // Show confirmation step
         showBookingStep(3);
     }
 
@@ -3213,5 +3238,8 @@
         }
     }, 3000);
     </script>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AeUQ7cOx3JpueMIKio_-2KOSeR-C0n9urXmAJE5H27IEsQ_nqngmU4uKzGS-N-pboPkRJ-1drfMUJSBa&currency=EUR" defer></script>
 </body>
 </html>
