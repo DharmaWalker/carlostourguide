@@ -639,6 +639,91 @@
         .btn-paypal:hover { background: #001f5b; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,48,135,0.25); }
         .btn-paypal svg { width: 20px; height: 20px; }
 
+        /* Payment OR divider */
+        .payment-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.2rem 0 0.6rem;
+            color: #aaa;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        .payment-divider::before,
+        .payment-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(26,60,97,0.15);
+        }
+        .payment-divider::before { margin-right: 0.75rem; }
+        .payment-divider::after  { margin-left:  0.75rem; }
+
+        .sumup-section-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #666;
+            text-align: center;
+            margin: 0 0 0.3rem;
+        }
+        .sumup-note {
+            font-size: 0.79rem;
+            color: #888;
+            text-align: center;
+            margin: 0 0 0.5rem;
+        }
+        .btn-sumup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            width: 100%;
+            padding: 1rem;
+            background: var(--azulejo-blue);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .btn-sumup:hover { background: #122d52; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,60,97,0.25); }
+
+        /* SumUp confirm section */
+        .sumup-confirm-section {
+            margin-top: 1rem;
+            padding: 0.9rem 1rem;
+            background: #f0f7f0;
+            border-radius: 10px;
+            border: 1px solid #c3e6cb;
+            text-align: center;
+        }
+        .sumup-confirm-note {
+            font-size: 0.82rem;
+            color: #2d6a4f;
+            margin-bottom: 0.6rem;
+        }
+        .btn-confirm-payment {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.4rem;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-confirm-payment:hover { background: #1ebc5a; transform: translateY(-2px); }
+
         .btn-secondary {
             display: flex;
             align-items: center;
@@ -1402,6 +1487,27 @@
                     <div class="confirm-summary" id="pendingSummary" style="margin-bottom:1.25rem;"></div>
                     <div id="paypal-button-container" style="min-height:50px;"></div>
                     <div id="paypal-msg" style="display:none;margin-top:0.75rem;padding:0.6rem 1rem;border-radius:8px;font-size:0.85rem;text-align:center;"></div>
+
+                    <!-- OR divider -->
+                    <div class="payment-divider"><span data-i18n="sumupOrDivider">OR</span></div>
+
+                    <!-- SumUp card payment -->
+                    <p class="sumup-section-title" data-i18n="sumupCardTitle">Or pay with card</p>
+                    <p class="sumup-note" data-i18n="sumupNote">You will be redirected to pay the €50 deposit via card</p>
+                    <a href="https://pay.sumup.com/b2c/QLRJL7MK" target="_blank" rel="noopener" class="btn-sumup" onclick="onSumUpClick()">
+                        <i class="fas fa-credit-card"></i>
+                        <span data-i18n="sumupBtn">Pay with Card</span>
+                    </a>
+
+                    <!-- Confirm after SumUp payment (shown when user returns) -->
+                    <div id="sumup-confirm-section" class="sumup-confirm-section" style="display:none;">
+                        <p class="sumup-confirm-note" data-i18n="sumupReturnNote">Once payment is complete, click below to continue:</p>
+                        <button class="btn-confirm-payment" onclick="confirmSumUpPayment()">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-i18n="sumupConfirmBtn">I have completed payment</span>
+                        </button>
+                    </div>
+
                     <button onclick="showBookingStep(1)" style="background:none;border:none;color:#888;font-size:0.82rem;cursor:pointer;margin-top:0.75rem;text-decoration:underline;" data-i18n="backBtn">← Go back</button>
                 </div>
 
@@ -1948,6 +2054,12 @@
             backBtn:         "← Go back",
             paypalCancel:    "Payment cancelled. You can try again.",
             paypalError:     "Payment error. Please try again or contact Carlos via WhatsApp.",
+            sumupOrDivider:  "OR",
+            sumupCardTitle:  "Or pay with card",
+            sumupNote:       "You will be redirected to pay the €50 deposit via card",
+            sumupBtn:        "Pay with Card",
+            sumupReturnNote: "Once payment is complete, click below to continue:",
+            sumupConfirmBtn: "I have completed payment",
             confirmTitle:    "Booking Requested!",
             confirmSubtitle: "Thank you! Carlos will confirm your tour within 24 hours.",
             calendarBtn:     "Add to Google Calendar",
@@ -2052,6 +2164,12 @@
             backBtn:         "← Voltar",
             paypalCancel:    "Pagamento cancelado. Pode tentar novamente.",
             paypalError:     "Erro no pagamento. Tente novamente ou contacte o Carlos via WhatsApp.",
+            sumupOrDivider:  "OU",
+            sumupCardTitle:  "Ou pague com cartão",
+            sumupNote:       "Será redireccionado para pagar o sinal de €50 por cartão",
+            sumupBtn:        "Pagar com Cartão",
+            sumupReturnNote: "Depois de concluir o pagamento, clique em baixo para continuar:",
+            sumupConfirmBtn: "Já completei o pagamento",
             confirmTitle:    "Reserva Efectuada!",
             confirmSubtitle: "Obrigado! O Carlos confirmará o seu tour em 24 horas.",
             calendarBtn:     "Adicionar ao Google Calendar",
@@ -2156,6 +2274,12 @@
             backBtn:         "← Volver",
             paypalCancel:    "Pago cancelado. Puedes intentarlo de nuevo.",
             paypalError:     "Error en el pago. Inténtalo de nuevo o contacta a Carlos por WhatsApp.",
+            sumupOrDivider:  "O",
+            sumupCardTitle:  "O paga con tarjeta",
+            sumupNote:       "Serás redirigido para pagar el depósito de €50 con tarjeta",
+            sumupBtn:        "Pagar con Tarjeta",
+            sumupReturnNote: "Una vez completado el pago, haz clic abajo para continuar:",
+            sumupConfirmBtn: "He completado el pago",
             confirmTitle:    "¡Reserva Realizada!",
             confirmSubtitle: "¡Gracias! Carlos confirmará tu tour en 24 horas.",
             calendarBtn:     "Añadir a Google Calendar",
@@ -2260,6 +2384,12 @@
             backBtn:         "← Torna indietro",
             paypalCancel:    "Pagamento annullato. Puoi riprovare.",
             paypalError:     "Errore nel pagamento. Riprova o contatta Carlos via WhatsApp.",
+            sumupOrDivider:  "O",
+            sumupCardTitle:  "O paga con carta",
+            sumupNote:       "Sarai reindirizzato per pagare l'acconto di €50 con carta",
+            sumupBtn:        "Paga con Carta",
+            sumupReturnNote: "Una volta completato il pagamento, clicca qui sotto per continuare:",
+            sumupConfirmBtn: "Ho completato il pagamento",
             confirmTitle:    "Prenotazione Effettuata!",
             confirmSubtitle: "Grazie! Carlos confermerà il tuo tour entro 24 ore.",
             calendarBtn:     "Aggiungi a Google Calendar",
@@ -2755,6 +2885,7 @@
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
+                    if (_pendingBooking) _pendingBooking.paymentMethod = 'paypal';
                     showConfirmation();
                 });
             },
@@ -2780,6 +2911,17 @@
         el.style.border = `1px solid ${type === 'error' ? '#f5c6cb' : '#ffc107'}`;
     }
 
+    function onSumUpClick() {
+        // Show the "I have completed payment" confirm section after opening SumUp
+        document.getElementById('sumup-confirm-section').style.display = '';
+    }
+
+    function confirmSumUpPayment() {
+        if (!_pendingBooking) return;
+        _pendingBooking.paymentMethod = 'card';
+        showConfirmation();
+    }
+
     function showConfirmation() {
         if (!_pendingBooking) return;
         const { tour, name, email, date, total, deposit } = _pendingBooking;
@@ -2797,7 +2939,10 @@
 
         // Build WhatsApp message
         const dateFormatted = new Date(date).toLocaleDateString('en-GB', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-        const waMsg = tour.waText(name, dateFormatted, currentPax, total, deposit);
+        let waMsg = tour.waText(name, dateFormatted, currentPax, total, deposit);
+        if (_pendingBooking.paymentMethod === 'card') {
+            waMsg = waMsg.replace('via PayPal', 'via card (SumUp)');
+        }
         document.getElementById('waConfirmBtn').href = `https://wa.me/${CARLOS_WA}?text=${encodeURIComponent(waMsg)}`;
 
         // Populate confirmation summary
@@ -2827,6 +2972,9 @@
         pendingStep.style.display = 'none';
         confirmStep.classList.remove('active');
         [dot1, dot2, dot3].forEach(d => d.className = 'step-dot');
+        // Reset SumUp confirm section whenever step changes
+        const sumupConfirm = document.getElementById('sumup-confirm-section');
+        if (sumupConfirm) sumupConfirm.style.display = 'none';
 
         if (step === 1) {
             formStep.classList.remove('hidden');
@@ -2956,25 +3104,25 @@
                 it: ['prenotare','prenotazione','come','contattare','whatsapp','riservare']
             },
             answer: {
-                en: "Booking is easy! Two options:\n\n1️⃣ Click <b>'Book This Tour'</b> on any tour card — fill in your details and pay a <b>€50 deposit</b> via PayPal (the rest on the day)\n\n2️⃣ Message Carlos directly on <b>WhatsApp: +351 933 302 031</b> — he'll get back to you quickly!\n\nCarlos will confirm availability within 24 hours.",
-                pt: "Reservar é simples! Duas opções:\n\n1️⃣ Clique em <b>'Reservar Este Tour'</b> em qualquer card — preencha os seus dados e pague um sinal de <b>50€</b> via PayPal (o resto no dia)\n\n2️⃣ Envie mensagem ao Carlos directamente pelo <b>WhatsApp: +351 933 302 031</b> — ele responde rapidamente!\n\nO Carlos confirma a disponibilidade em 24 horas.",
-                es: "¡Reservar es fácil! Dos opciones:\n\n1️⃣ Haz clic en <b>'Reservar Este Tour'</b> en cualquier tarjeta — rellena tus datos y paga una señal de <b>50€</b> vía PayPal (el resto el día del tour)\n\n2️⃣ Escribe a Carlos directamente por <b>WhatsApp: +351 933 302 031</b> — ¡te responderá rápidamente!\n\nCarlos confirma la disponibilidad en 24 horas.",
-                it: "Prenotare è semplice! Due opzioni:\n\n1️⃣ Clicca su <b>'Prenota Questo Tour'</b> su qualsiasi card — inserisci i tuoi dati e paga un acconto di <b>€50</b> via PayPal (il resto il giorno del tour)\n\n2️⃣ Scrivi a Carlos direttamente su <b>WhatsApp: +351 933 302 031</b> — risponde rapidamente!\n\nCarlos conferma la disponibilità entro 24 ore."
+                en: "Booking is easy! Two options:\n\n1️⃣ Click <b>'Book This Tour'</b> on any tour card — fill in your details and pay a <b>€50 deposit</b> via PayPal or card (the rest on the day)\n\n2️⃣ Message Carlos directly on <b>WhatsApp: +351 933 302 031</b> — he'll get back to you quickly!\n\nCarlos will confirm availability within 24 hours.",
+                pt: "Reservar é simples! Duas opções:\n\n1️⃣ Clique em <b>'Reservar Este Tour'</b> em qualquer card — preencha os seus dados e pague um sinal de <b>50€</b> via PayPal ou cartão (o resto no dia)\n\n2️⃣ Envie mensagem ao Carlos directamente pelo <b>WhatsApp: +351 933 302 031</b> — ele responde rapidamente!\n\nO Carlos confirma a disponibilidade em 24 horas.",
+                es: "¡Reservar es fácil! Dos opciones:\n\n1️⃣ Haz clic en <b>'Reservar Este Tour'</b> en cualquier tarjeta — rellena tus datos y paga una señal de <b>50€</b> vía PayPal o tarjeta (el resto el día del tour)\n\n2️⃣ Escribe a Carlos directamente por <b>WhatsApp: +351 933 302 031</b> — ¡te responderá rápidamente!\n\nCarlos confirma la disponibilidad en 24 horas.",
+                it: "Prenotare è semplice! Due opzioni:\n\n1️⃣ Clicca su <b>'Prenota Questo Tour'</b> su qualsiasi card — inserisci i tuoi dati e paga un acconto di <b>€50</b> via PayPal o carta (il resto il giorno del tour)\n\n2️⃣ Scrivi a Carlos direttamente su <b>WhatsApp: +351 933 302 031</b> — risponde rapidamente!\n\nCarlos conferma la disponibilità entro 24 ore."
             }
         },
         {
             id: 'payment',
             keywords: {
-                en: ['payment','pay','deposit','paypal','how much pay','refund','cancel','cancellation'],
-                pt: ['pagamento','pagar','sinal','paypal','reembolso','cancelar','cancelamento'],
-                es: ['pago','pagar','señal','paypal','reembolso','cancelar','cancelación'],
-                it: ['pagamento','pagare','acconto','paypal','rimborso','cancellare','cancellazione']
+                en: ['payment','pay','deposit','paypal','sumup','card','credit card','how much pay','refund','cancel','cancellation'],
+                pt: ['pagamento','pagar','sinal','paypal','sumup','cartão','reembolso','cancelar','cancelamento'],
+                es: ['pago','pagar','señal','paypal','sumup','tarjeta','reembolso','cancelar','cancelación'],
+                it: ['pagamento','pagare','acconto','paypal','sumup','carta','rimborso','cancellare','cancellazione']
             },
             answer: {
-                en: "💳 <b>Payment & Cancellation:</b>\n\n• A flat <b>€50 deposit</b> is paid upfront via PayPal to secure your booking — this amount is deducted from the total on the day\n• The remaining balance is paid in cash on the day of the tour\n• For cancellation or refund queries, please contact Carlos directly on WhatsApp — he'll sort it out personally.",
-                pt: "💳 <b>Pagamento e Cancelamento:</b>\n\n• Um <b>sinal fixo de 50€</b> é pago antecipadamente via PayPal para garantir a reserva — este valor é abatido no total no dia do tour\n• O valor restante é pago em dinheiro no dia do tour\n• Para cancelamentos ou questões de reembolso, contacte o Carlos directamente pelo WhatsApp — ele trata pessoalmente.",
-                es: "💳 <b>Pago y Cancelación:</b>\n\n• Se paga una <b>señal fija de 50€</b> por adelantado via PayPal para asegurar la reserva — este importe se descuenta del total el día del tour\n• El saldo restante se paga en efectivo el día del tour\n• Para cancelaciones o consultas de reembolso, contacta a Carlos directamente por WhatsApp — él lo gestionará personalmente.",
-                it: "💳 <b>Pagamento e Cancellazione:</b>\n\n• Un <b>acconto fisso di €50</b> viene pagato in anticipo via PayPal per garantire la prenotazione — questo importo verrà detratto dal totale il giorno del tour\n• Il saldo rimanente viene pagato in contanti il giorno del tour\n• Per cancellazioni o rimborsi, contatta Carlos direttamente su WhatsApp — lo gestirà personalmente."
+                en: "💳 <b>Payment & Cancellation:</b>\n\n• A flat <b>€50 deposit</b> is paid upfront to secure your booking — this amount is deducted from the total on the day\n• Pay via <b>PayPal</b> or by <b>card</b> (via SumUp) — both options are available at checkout\n• The remaining balance is paid in cash on the day of the tour\n• For cancellation or refund queries, please contact Carlos directly on WhatsApp — he'll sort it out personally.",
+                pt: "💳 <b>Pagamento e Cancelamento:</b>\n\n• Um <b>sinal fixo de 50€</b> é pago antecipadamente para garantir a reserva — este valor é abatido no total no dia do tour\n• Pague via <b>PayPal</b> ou com <b>cartão</b> (via SumUp) — ambas as opções disponíveis no checkout\n• O valor restante é pago em dinheiro no dia do tour\n• Para cancelamentos ou questões de reembolso, contacte o Carlos directamente pelo WhatsApp — ele trata pessoalmente.",
+                es: "💳 <b>Pago y Cancelación:</b>\n\n• Se paga una <b>señal fija de 50€</b> por adelantado para asegurar la reserva — este importe se descuenta del total el día del tour\n• Paga vía <b>PayPal</b> o con <b>tarjeta</b> (vía SumUp) — ambas opciones disponibles en el checkout\n• El saldo restante se paga en efectivo el día del tour\n• Para cancelaciones o consultas de reembolso, contacta a Carlos directamente por WhatsApp — él lo gestionará personalmente.",
+                it: "💳 <b>Pagamento e Cancellazione:</b>\n\n• Un <b>acconto fisso di €50</b> viene pagato in anticipo per garantire la prenotazione — questo importo verrà detratto dal totale il giorno del tour\n• Paga via <b>PayPal</b> o con <b>carta</b> (via SumUp) — entrambe le opzioni disponibili al checkout\n• Il saldo rimanente viene pagato in contanti il giorno del tour\n• Per cancellazioni o rimborsi, contatta Carlos direttamente su WhatsApp — lo gestirà personalmente."
             }
         },
         {
