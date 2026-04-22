@@ -2645,7 +2645,7 @@
 
     const FLAT_RATE      = 260;   // € flat when total distance ≤ threshold
     const FLAT_THRESHOLD = 300;   // km round-trip threshold for flat rate
-    const RATE_PER_KM    = 1.5;   // €/km above threshold
+    const RATE_PER_KM    = 1.25;  // €/km above threshold
     const ROAD_FACTOR    = 1.3;   // straight-line × factor = road estimate
 
     let map, selectedIds = new Set(), markers = {};
@@ -3272,7 +3272,7 @@
                 it: ['prezzo','prezzi','costo','quanto','caro','economico','tariffa']
             },
             answer: {
-                en: "Here's a quick price overview for private group tours:\n\n🏰 <b>Sintra</b> (6-7h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 pax)\n🏙️ <b>Lisbon</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pax)\n⛪ <b>Fátima & Beyond</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 pax)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pax)\n🗺️ <b>Custom Tours</b>: €260 flat (up to ~300km) or €1.50/km\n\nAll prices include private van + guide + hotel pick-up.",
+                en: "Here's a quick price overview for private group tours:\n\n🏰 <b>Sintra</b> (6-7h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 pax)\n🏙️ <b>Lisbon</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pax)\n⛪ <b>Fátima & Beyond</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 pax)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pax)\n🗺️ <b>Custom Tours</b>: €260 flat (up to ~300km) or €1.25/km\n\nAll prices include private van + guide + hotel pick-up.",
                 pt: "Resumo dos preços para grupos privados:\n\n🏰 <b>Sintra</b> (6-7h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 pessoas)\n🏙️ <b>Lisboa</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pessoas)\n⛪ <b>Fátima e Mais</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 pessoas)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pessoas)\n🗺️ <b>Tours Personalizados</b>: €260 fixo (até ~300km) ou €1,50/km\n\nTodos incluem van privada + guia + recolha no hotel.",
                 es: "Resumen de precios para grupos privados:\n\n🏰 <b>Sintra</b> (6-7h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 personas)\n🏙️ <b>Lisboa</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 personas)\n⛪ <b>Fátima y Más</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 personas)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 personas)\n🗺️ <b>Tours Personalizados</b>: €260 fijo (hasta ~300km) o €1,50/km\n\nTodos incluyen furgoneta privada + guía + recogida en hotel.",
                 it: "Riepilogo prezzi per gruppi privati:\n\n🏰 <b>Sintra</b> (6-7h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 persone)\n🏙️ <b>Lisbona</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 persone)\n⛪ <b>Fátima e Altro</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 persone)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 persone)\n🗺️ <b>Tour Personalizzati</b>: €260 fisso (fino a ~300km) o €1,50/km\n\nTutti includono van privato + guida + prelievo in hotel."
@@ -3422,7 +3422,7 @@
                 it: ['personalizzato','personalizzare','creare','spagna','porto','algarve','évora','braga','privato','su misura']
             },
             answer: {
-                en: "🗺️ <b>Custom Tours — Build Your Own!</b>\n\nI operate across all of Portugal and Spain. Use the <b>interactive map</b> on this page to select your destinations and get an instant price estimate.\n\n<b>Pricing:</b>\n• Routes up to ~300km: €260 flat rate\n• Longer routes: €1.50/km from Carcavelos\n\nPopular destinations: Porto, Évora, Algarve, Braga, Guimarães, Sevilla, Madrid and more!",
+                en: "🗺️ <b>Custom Tours — Build Your Own!</b>\n\nI operate across all of Portugal and Spain. Use the <b>interactive map</b> on this page to select your destinations and get an instant price estimate.\n\n<b>Pricing:</b>\n• Routes up to ~300km: €260 flat rate\n• Longer routes: €1.25/km from Carcavelos\n\nPopular destinations: Porto, Évora, Algarve, Braga, Guimarães, Sevilla, Madrid and more!",
                 pt: "🗺️ <b>Tours Personalizados — Crie o Seu!</b>\n\nOpero em todo Portugal e Espanha. Use o <b>mapa interactivo</b> nesta página para seleccionar os seus destinos e obter uma estimativa de preço imediata.\n\n<b>Preços:</b>\n• Rotas até ~300km: €260 fixo\n• Rotas mais longas: €1,50/km a partir de Carcavelos\n\nDestinos populares: Porto, Évora, Algarve, Braga, Guimarães, Sevilha, Madrid e mais!",
                 es: "🗺️ <b>Tours Personalizados — ¡Crea el Tuyo!</b>\n\nOpero en todo Portugal y España. Usa el <b>mapa interactivo</b> en esta página para seleccionar tus destinos y obtener un presupuesto estimado al instante.\n\n<b>Precios:</b>\n• Rutas hasta ~300km: €260 fijo\n• Rutas más largas: €1,50/km desde Carcavelos\n\nDestinos populares: Porto, Évora, Algarve, Braga, Guimarães, Sevilla, Madrid y más.",
                 it: "🗺️ <b>Tour Personalizzati — Costruisci il Tuo!</b>\n\nOpero in tutto il Portogallo e la Spagna. Usa la <b>mappa interattiva</b> su questa pagina per selezionare le tue destinazioni e ottenere un preventivo istantaneo.\n\n<b>Prezzi:</b>\n• Percorsi fino a ~300km: €260 fisso\n• Percorsi più lunghi: €1,50/km da Carcavelos\n\nDestinazioni popolari: Porto, Évora, Algarve, Braga, Guimarães, Siviglia, Madrid e altro!"
