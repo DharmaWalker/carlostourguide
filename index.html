@@ -150,17 +150,21 @@
             align-items: center;
             padding: 2rem;
             text-align: center;
-            background: linear-gradient(to bottom, #F5E6D0, #FAF0E0),
-                        url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M20 20.5V18H0v-2h20v-2.5L22.5 16 25 13.5V0h2v13.5L29.5 16l2.5-2.5V16h8v2h-8v2.5L29.5 23 27 25.5V40h-2V25.5L22.5 23l-2.5 2.5V23H0v-2h18v-2.5z" fill="%231A3C61" fill-opacity="0.03" fill-rule="evenodd"/></svg>');
-            border-bottom: 8px solid var(--azulejo-blue);
+            background:
+                radial-gradient(ellipse at 18% 14%, rgba(212,175,55,0.28) 0%, transparent 48%),
+                radial-gradient(ellipse at 83% 88%, rgba(200,90,50,0.20) 0%, transparent 44%),
+                radial-gradient(ellipse at 55% 48%, rgba(255,255,255,0.55) 0%, transparent 62%),
+                url('data:image/svg+xml;utf8,<svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><path d="M26 5 L47 26 L26 47 L5 26 Z" fill="none" stroke="%23C85A32" stroke-width="0.7" stroke-opacity="0.10"/><circle cx="26" cy="26" r="2.2" fill="%23D4AF37" fill-opacity="0.12"/><circle cx="0" cy="0" r="1.2" fill="%23C85A32" fill-opacity="0.07"/><circle cx="52" cy="0" r="1.2" fill="%23C85A32" fill-opacity="0.07"/><circle cx="0" cy="52" r="1.2" fill="%23C85A32" fill-opacity="0.07"/><circle cx="52" cy="52" r="1.2" fill="%23C85A32" fill-opacity="0.07"/></svg>'),
+                linear-gradient(158deg, #fdf8f0 0%, #f6e9d6 38%, #f0dcca 70%, #f6e7d9 100%);
+            border-bottom: 8px solid var(--terracotta);
         }
 
         .profile-img {
             width: 200px; height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--azulejo-blue);
-            box-shadow: 0 10px 30px rgba(26,60,97,0.2);
+            border: 4px solid var(--terracotta);
+            box-shadow: 0 12px 40px rgba(200,90,50,0.18), 0 4px 16px rgba(0,0,0,0.10);
             margin-bottom: 1.5rem;
             animation: fadeUp 1s ease-out;
         }
