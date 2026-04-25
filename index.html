@@ -1258,6 +1258,93 @@
         @media (max-width: 600px) {
             .reviews-grid { grid-template-columns: 1fr; }
         }
+
+        /* ══════════════════════════════
+           TOUR MOMENTS GALLERY
+        ══════════════════════════════ */
+        .tour-moments-section {
+            background: linear-gradient(170deg, #FFFAF5 0%, #FDF5E6 55%, #F8EDD8 100%);
+            padding: 5rem 1.5rem;
+        }
+        .tour-moments-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .moments-masonry {
+            columns: 3;
+            column-gap: 1.2rem;
+            margin-top: 3.5rem;
+        }
+        .moment-item {
+            break-inside: avoid;
+            margin-bottom: 1.2rem;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(184,120,60,0.10);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .moment-item:hover {
+            transform: scale(1.025) translateY(-4px);
+            box-shadow: 0 18px 45px rgba(184,120,60,0.22);
+        }
+        .moment-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .moment-item:hover img {
+            transform: scale(1.07);
+        }
+        .moment-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,60,97,0.75) 0%, rgba(26,60,97,0.15) 50%, transparent 75%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .moment-item:hover .moment-overlay {
+            opacity: 1;
+        }
+        .moment-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 0.9rem 1rem 0.75rem;
+            color: white;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            transform: translateY(8px);
+            opacity: 0;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            pointer-events: none;
+        }
+        .moment-item:hover .moment-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Varied aspect ratios for mosaic feel */
+        .moment-item:nth-child(1) { aspect-ratio: 4/3; }
+        .moment-item:nth-child(2) { aspect-ratio: 3/4; }
+        .moment-item:nth-child(3) { aspect-ratio: 16/10; }
+        .moment-item:nth-child(4) { aspect-ratio: 3/4; }
+        .moment-item:nth-child(5) { aspect-ratio: 4/3; }
+        .moment-item:nth-child(6) { aspect-ratio: 16/10; }
+        @media (max-width: 900px) {
+            .moments-masonry { columns: 2; }
+        }
+        @media (max-width: 600px) {
+            .tour-moments-section { padding: 4rem 1rem; }
+            .moments-masonry { columns: 1; }
+            .moment-item { aspect-ratio: auto !important; }
+            .moment-item img { height: 240px; }
+            .moment-overlay { opacity: 1; }
+            .moment-label { opacity: 1; transform: translateY(0); }
+        }
+
         @keyframes chatPulseRing {
             0%   { transform: scale(1);    opacity: .6; }
             70%  { transform: scale(1.55); opacity: 0; }
@@ -1940,6 +2027,47 @@
     </section>
     </div>
 
+    <!-- Tour Moments Gallery -->
+    <section class="tour-moments-section">
+        <div class="tour-moments-inner">
+            <div class="animate-on-scroll">
+                <h2 class="section-title" data-i18n="tourMomentsTitle">Tour Moments</h2>
+            </div>
+            <div class="moments-masonry">
+                <div class="moment-item animate-on-scroll" onclick="openLightboxFromEl(this)">
+                    <img src="gallery-1.jpg" alt="Poço Iniciático, Quinta da Regaleira" loading="lazy">
+                    <div class="moment-overlay"></div>
+                    <div class="moment-label" data-i18n="gallery1Caption">Poço Iniciático · Quinta da Regaleira</div>
+                </div>
+                <div class="moment-item animate-on-scroll" onclick="openLightboxFromEl(this)">
+                    <img src="gallery-2.jpg" alt="Grupo na Quinta da Regaleira" loading="lazy">
+                    <div class="moment-overlay"></div>
+                    <div class="moment-label" data-i18n="gallery2Caption">Quinta da Regaleira — Grupo</div>
+                </div>
+                <div class="moment-item animate-on-scroll" onclick="openLightboxFromEl(this)">
+                    <img src="gallery-3.jpg" alt="Nazaré miradouro" loading="lazy">
+                    <div class="moment-overlay"></div>
+                    <div class="moment-label" data-i18n="gallery3Caption">Nazaré — Miradouro</div>
+                </div>
+                <div class="moment-item animate-on-scroll" onclick="openLightboxFromEl(this)">
+                    <img src="gallery-4.jpg" alt="Quinta da Regaleira gruta" loading="lazy">
+                    <div class="moment-overlay"></div>
+                    <div class="moment-label" data-i18n="gallery4Caption">Quinta da Regaleira — Gruta</div>
+                </div>
+                <div class="moment-item animate-on-scroll" onclick="openLightboxFromEl(this)">
+                    <img src="gallery-5.jpg" alt="Quinta da Regaleira escultura" loading="lazy">
+                    <div class="moment-overlay"></div>
+                    <div class="moment-label" data-i18n="gallery5Caption">Quinta da Regaleira — Escultura</div>
+                </div>
+                <div class="moment-item animate-on-scroll" onclick="openLightboxFromEl(this)">
+                    <img src="gallery-6.jpg" alt="Grupo frente ao palácio da Quinta da Regaleira" loading="lazy">
+                    <div class="moment-overlay"></div>
+                    <div class="moment-label" data-i18n="gallery6Caption">Quinta da Regaleira — Palácio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Reviews -->
     <section class="reviews-section">
         <div style="text-align:center;margin-bottom:3rem;">
@@ -2150,6 +2278,14 @@
             footerSub:       "Premium Tour Guide in Portugal & Spain",
             reviewsTitle:    "What Our Guests Say",
             footerRights:    "All Rights Reserved.",
+            // Gallery
+            tourMomentsTitle:  "Tour Moments",
+            gallery1Caption:   "Initiation Well · Quinta da Regaleira",
+            gallery2Caption:   "Quinta da Regaleira — Group",
+            gallery3Caption:   "Nazaré — Viewpoint",
+            gallery4Caption:   "Quinta da Regaleira — Cave",
+            gallery5Caption:   "Quinta da Regaleira — Sculpture",
+            gallery6Caption:   "Quinta da Regaleira — Palace",
             // Booking modal
             modalTitle:      "Book Your Tour",
             formName:        "Your Name",
@@ -2264,6 +2400,14 @@
             footerSub:       "Guia Turístico Premium em Portugal & Espanha",
             reviewsTitle:    "O Que Dizem os Nossos Clientes",
             footerRights:    "Todos os Direitos Reservados.",
+            // Gallery
+            tourMomentsTitle:  "Momentos dos Tours",
+            gallery1Caption:   "Poço Iniciático · Quinta da Regaleira",
+            gallery2Caption:   "Quinta da Regaleira — Grupo",
+            gallery3Caption:   "Nazaré — Miradouro",
+            gallery4Caption:   "Quinta da Regaleira — Gruta",
+            gallery5Caption:   "Quinta da Regaleira — Escultura",
+            gallery6Caption:   "Quinta da Regaleira — Palácio",
             // Booking modal
             modalTitle:      "Reservar Tour",
             formName:        "O Seu Nome",
@@ -2378,6 +2522,14 @@
             footerSub:       "Guía Turístico Premium en Portugal & España",
             reviewsTitle:    "Lo Que Dicen Nuestros Clientes",
             footerRights:    "Todos los Derechos Reservados.",
+            // Gallery
+            tourMomentsTitle:  "Momentos de los Tours",
+            gallery1Caption:   "Pozo Iniciático · Quinta da Regaleira",
+            gallery2Caption:   "Quinta da Regaleira — Grupo",
+            gallery3Caption:   "Nazaré — Mirador",
+            gallery4Caption:   "Quinta da Regaleira — Gruta",
+            gallery5Caption:   "Quinta da Regaleira — Escultura",
+            gallery6Caption:   "Quinta da Regaleira — Palacio",
             // Booking modal
             modalTitle:      "Reservar Tour",
             formName:        "Tu Nombre",
@@ -2492,6 +2644,14 @@
             footerSub:       "Guida Turistica Premium in Portogallo & Spagna",
             reviewsTitle:    "Cosa Dicono i Nostri Ospiti",
             footerRights:    "Tutti i Diritti Riservati.",
+            // Gallery
+            tourMomentsTitle:  "Momenti dei Tour",
+            gallery1Caption:   "Pozzo Iniziatico · Quinta da Regaleira",
+            gallery2Caption:   "Quinta da Regaleira — Gruppo",
+            gallery3Caption:   "Nazaré — Belvedere",
+            gallery4Caption:   "Quinta da Regaleira — Grotta",
+            gallery5Caption:   "Quinta da Regaleira — Scultura",
+            gallery6Caption:   "Quinta da Regaleira — Palazzo",
             // Booking modal
             modalTitle:      "Prenota il Tour",
             formName:        "Il Tuo Nome",
@@ -2636,6 +2796,12 @@
     function closeLightbox() {
         document.getElementById('lightbox').classList.remove('active');
         document.body.style.overflow = '';
+    }
+
+    function openLightboxFromEl(el) {
+        const img = el.querySelector('img');
+        const caption = el.querySelector('.moment-label').textContent;
+        openLightbox(img.getAttribute('src'), caption);
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeBookingModal(); } });
