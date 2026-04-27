@@ -1550,31 +1550,6 @@
             border: 2px solid rgba(255,255,255,.4);
             flex-shrink: 0;
         }
-        .chat-mascot-wrap {
-            position: relative;
-            flex-shrink: 0;
-        }
-        .chat-mascot-badge {
-            position: absolute;
-            bottom: -4px; right: -6px;
-            width: 26px; height: 26px;
-            background: var(--terracotta);
-            border-radius: 50%;
-            border: 2px solid var(--azulejo);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 14px;
-            line-height: 1;
-            cursor: default;
-            transform-origin: bottom center;
-        }
-        .chat-mascot-badge.wave {
-            animation: mascotWave 0.6s ease-in-out 2;
-        }
-        @keyframes mascotWave {
-            0%,100% { transform: rotate(0deg); }
-            25%      { transform: rotate(-20deg); }
-            75%      { transform: rotate(18deg); }
-        }
         .chat-header-info { flex: 1; }
         .chat-header-name { font-weight: 700; font-size: 0.9rem; line-height: 1.2; }
         .chat-header-status { font-size: 0.72rem; opacity: .8; display: flex; align-items: center; gap: 0.3rem; }
@@ -2543,10 +2518,7 @@
     <!-- Chat window -->
     <div class="chat-window" id="chat-window" role="dialog" aria-label="FAQ Chat">
         <div class="chat-header">
-            <div class="chat-mascot-wrap">
-                <img src="profile.jpg" alt="Carlos" class="chat-header-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Carlos+Figueiredo&background=1e5676&color=fff&size=80'">
-                <span class="chat-mascot-badge" id="chat-mascot" title="Zé, o Lémure">🐒</span>
-            </div>
+            <img src="profile.jpg" alt="Carlos" class="chat-header-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Carlos+Figueiredo&background=1e5676&color=fff&size=80'">
             <div class="chat-header-info">
                 <div class="chat-header-name">Carlos Figueiredo</div>
                 <div class="chat-header-status" data-i18n="chatStatus">Online · Typically replies instantly</div>
@@ -4114,6 +4086,21 @@
             }
         },
         {
+            id: 'shortTours',
+            keywords: {
+                en: ['short tour','half day','4 hours','quick tour','brief visit','limited time','morning tour','afternoon tour','short','half','few hours','not full day'],
+                pt: ['tour curto','meio dia','4 horas','tour rápido','visita breve','tempo limitado','tour manhã','tour tarde','curto','meio','poucas horas','não dia inteiro'],
+                es: ['tour corto','medio día','4 horas','tour rápido','visita breve','tiempo limitado','tour mañana','tour tarde','corto','medio','pocas horas'],
+                it: ['tour corto','mezza giornata','4 ore','tour rapido','visita breve','tempo limitato','tour mattina','tour pomeriggio','corto','mezza','poche ore']
+            },
+            answer: {
+                en: "⏱️ <b>Half Day Tours (4 hours):</b>\n\nYes! I offer two <b>Half Day — Essential Visits</b> tours:\n\n🏰 <b>Sintra Half Day</b> — Pick up at Sintra station. Pena Palace, Sintra historic centre, Quinta da Regaleira.\n🏙️ <b>Lisbon Half Day</b> — Pick up at your preferred location. Belém, Alfama, Baixa & iconic viewpoints.\n\n<b>Prices (both tours):</b>\n• 1-2 pax → €170\n• 3-4 pax → €200\n• 5-6 pax → €220\n\nPerfect if you have limited time! I can also customise a Half Day to your preferences — just ask!",
+                pt: "⏱️ <b>Tours de Meio Dia (4 horas):</b>\n\nSim! Ofereço dois tours <b>Half Day — Visitas Essenciais</b>:\n\n🏰 <b>Sintra Half Day</b> — Recolha na estação de Sintra. Palácio da Pena, centro histórico de Sintra, Quinta da Regaleira.\n🏙️ <b>Lisboa Half Day</b> — Recolha no local da sua preferência. Belém, Alfama, Baixa e miradouros icónicos.\n\n<b>Preços (ambos os tours):</b>\n• 1-2 pessoas → €170\n• 3-4 pessoas → €200\n• 5-6 pessoas → €220\n\nPerfeito se tiver tempo limitado! Posso também personalizar um meio dia às suas preferências — é só pedir!",
+                es: "⏱️ <b>Tours de Medio Día (4 horas):</b>\n\n¡Sí! Ofrezco dos tours <b>Half Day — Visitas Esenciales</b>:\n\n🏰 <b>Sintra Half Day</b> — Recogida en la estación de Sintra. Palacio de la Pena, centro histórico de Sintra, Quinta da Regaleira.\n🏙️ <b>Lisboa Half Day</b> — Recogida en el lugar de su preferencia. Belém, Alfama, Baixa y miradores icónicos.\n\n<b>Precios (ambos tours):</b>\n• 1-2 personas → €170\n• 3-4 personas → €200\n• 5-6 personas → €220\n\n¡Perfecto si tiene tiempo limitado! También puedo personalizar un medio día según sus preferencias — ¡solo pregúnteme!",
+                it: "⏱️ <b>Tour di Mezza Giornata (4 ore):</b>\n\nSì! Offro due tour <b>Half Day — Visite Essenziali</b>:\n\n🏰 <b>Sintra Half Day</b> — Prelievo alla stazione di Sintra. Palazzo della Pena, centro storico di Sintra, Quinta da Regaleira.\n🏙️ <b>Lisbona Half Day</b> — Prelievo nel luogo preferito. Belém, Alfama, Baixa e punti panoramici iconici.\n\n<b>Prezzi (entrambi i tour):</b>\n• 1-2 persone → €170\n• 3-4 persone → €200\n• 5-6 persone → €220\n\nPerfetto se ha tempo limitato! Posso anche personalizzare una mezza giornata secondo le sue preferenze — basta chiedere!"
+            }
+        },
+        {
             id: 'transport',
             keywords: {
                 en: ['transport','van','car','vehicle','how travel','comfortable','private'],
@@ -4230,17 +4217,6 @@
         win.classList.toggle('open', chatOpen);
         btn.classList.toggle('open', chatOpen);
         badge.classList.remove('show');
-
-        // Mascot wave animation when opening
-        if (chatOpen) {
-            const mascot = document.getElementById('chat-mascot');
-            if (mascot) {
-                mascot.classList.remove('wave');
-                void mascot.offsetWidth; // force reflow to restart animation
-                mascot.classList.add('wave');
-                mascot.addEventListener('animationend', () => mascot.classList.remove('wave'), { once: true });
-            }
-        }
 
         if (chatOpen && !chatInitialized) {
             chatInitialized = true;
