@@ -190,6 +190,34 @@
             opacity: 0.92;
         }
 
+        /* ── Made in Portugal badge ── */
+        .mip-badge-hero {
+            position: absolute;
+            bottom: 2.2rem;
+            right: 2rem;
+            width: 90px;
+            opacity: 0.82;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 2;
+        }
+        .mip-badge-hero:hover {
+            opacity: 1;
+            transform: scale(1.06);
+        }
+        .mip-badge-footer {
+            display: block;
+            width: 80px;
+            margin: 1.2rem auto 0;
+            opacity: 0.75;
+            filter: drop-shadow(0 1px 4px rgba(0,0,0,0.15));
+            transition: opacity 0.3s;
+        }
+        .mip-badge-footer:hover { opacity: 1; }
+        @media (max-width: 480px) {
+            .mip-badge-hero { width: 70px; bottom: 1.5rem; right: 1rem; }
+        }
+
         .hero h1 {
             font-size: 2.5rem;
             color: var(--azulejo-blue);
@@ -1889,6 +1917,8 @@
         <a href="#tours" class="scroll-indicator" id="scrollIndicator" aria-label="Scroll down">
             <i class="fas fa-chevron-down"></i>
         </a>
+        <!-- Made in Portugal badge -->
+        <img src="made-in-portugal.svg" alt="Made in Portugal" class="mip-badge-hero">
     </header>
 
     <!-- About -->
@@ -2598,6 +2628,7 @@
         <p class="footer-text" style="margin-top:1rem;font-size:0.75rem;">
             &copy; <script>document.write(new Date().getFullYear())</script> <span data-i18n="footerRights">All Rights Reserved.</span>
         </p>
+        <img src="made-in-portugal.svg" alt="Made in Portugal" class="mip-badge-footer">
     </footer>
 
     <!-- ══════════════════════════════
