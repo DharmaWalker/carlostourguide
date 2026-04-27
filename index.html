@@ -3757,6 +3757,38 @@
         showConfirmation();
     }
 
+    function launchCelebration() {
+        if (typeof confetti !== 'function') return;
+        const colors = ['#C85A32', '#1a3c61', '#d4a574', '#ffffff', '#e8b89a'];
+
+        // First burst — centre
+        confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { x: 0.5, y: 0.55 },
+            colors: colors,
+            scalar: 1.1
+        });
+
+        // Side cannons with delay
+        setTimeout(() => {
+            confetti({ particleCount: 50, angle: 60, spread: 55, origin: { x: 0, y: 0.65 }, colors: colors });
+            confetti({ particleCount: 50, angle: 120, spread: 55, origin: { x: 1, y: 0.65 }, colors: colors });
+        }, 250);
+
+        // Final shower
+        setTimeout(() => {
+            confetti({
+                particleCount: 60,
+                spread: 90,
+                origin: { x: 0.5, y: 0.5 },
+                colors: colors,
+                gravity: 0.8,
+                scalar: 0.9
+            });
+        }, 600);
+    }
+
     function showConfirmation() {
         if (!_pendingBooking) return;
         const { tour, name, email, date, total, deposit } = _pendingBooking;
@@ -3799,6 +3831,7 @@
         if (subtitleEl) subtitleEl.textContent = isSumup ? (t.confirmSubtitleSumup || 'Your booking will be confirmed once Carlos verifies your payment. He will contact you within 24 hours.') : (t.confirmSubtitle || 'Thank you! Carlos will confirm your tour within 24 hours.');
 
         showBookingStep(3);
+        launchCelebration();
 
         // Send email notification (non-blocking — confirmation shows regardless)
         const warningEl = document.getElementById('emailWarningMsg');
@@ -4354,6 +4387,7 @@
 
     <!-- PayPal SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=AUH7O6PCUCQpdviMa207W89CBezgwcKpQvbiQp_8nZ3ibgWCWlRx0FRx2ZBzg9T4fW2yQEOrtBlkJxO7&currency=EUR"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
         // Hide scroll indicator on scroll
         (function() {
