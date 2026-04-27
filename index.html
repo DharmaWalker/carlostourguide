@@ -1292,6 +1292,178 @@
         /* ══════════════════════════════
            REVIEWS
         ══════════════════════════════ */
+
+        /* ══════════════════════════════
+           FAQ SECTION
+        ══════════════════════════════ */
+        .faq-section {
+            background: linear-gradient(160deg, #f0f4f8 0%, #e8eef5 100%);
+            padding: 4rem 1rem 3.5rem;
+        }
+        .faq-section .section-label { color: var(--terracotta); }
+        .faq-section .section-title { color: var(--azulejo-blue); }
+
+        .faq-grid {
+            max-width: 820px;
+            margin: 0 auto 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(26,60,97,0.08);
+            overflow: hidden;
+            border: 1px solid rgba(26,60,97,0.07);
+            transition: box-shadow 0.25s;
+        }
+        .faq-item:hover { box-shadow: 0 4px 18px rgba(26,60,97,0.13); }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.1rem 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--azulejo-blue);
+            transition: background 0.2s;
+        }
+        .faq-question:hover { background: rgba(26,60,97,0.04); }
+        .faq-question .faq-icon {
+            flex-shrink: 0;
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: var(--azulejo-blue);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem;
+            transition: transform 0.3s, background 0.2s;
+        }
+        .faq-item.open .faq-question .faq-icon {
+            transform: rotate(45deg);
+            background: var(--terracotta);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.3s;
+            padding: 0 1.4rem;
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding: 0 1.4rem 1.2rem;
+        }
+
+        /* FAQ inline bot */
+        .faq-bot {
+            max-width: 820px;
+            margin: 0 auto 2rem;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 3px 16px rgba(26,60,97,0.10);
+            overflow: hidden;
+            border: 1px solid rgba(26,60,97,0.08);
+        }
+        .faq-bot-header {
+            background: linear-gradient(135deg, var(--azulejo-blue) 0%, #2a5298 100%);
+            padding: 0.9rem 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #fff;
+        }
+        .faq-bot-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+        }
+        .faq-bot-name { font-weight: 700; font-size: 0.95rem; }
+        .faq-bot-status { font-size: 0.75rem; opacity: 0.8; }
+        .faq-bot-body { padding: 1.2rem 1.4rem; }
+        .faq-bot-bubble {
+            background: #f0f4f8;
+            border-radius: 0 14px 14px 14px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            color: #333;
+            max-width: 85%;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .faq-bot-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .faq-bot-btn {
+            background: none;
+            border: 2px solid var(--azulejo-blue);
+            color: var(--azulejo-blue);
+            border-radius: 20px;
+            padding: 0.45rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .faq-bot-btn:hover, .faq-bot-btn.active {
+            background: var(--azulejo-blue);
+            color: #fff;
+        }
+        .faq-bot-reply {
+            background: #fff8f0;
+            border-left: 3px solid var(--terracotta);
+            border-radius: 0 10px 10px 0;
+            padding: 0.75rem 1rem;
+            font-size: 0.88rem;
+            color: #333;
+            line-height: 1.6;
+            display: none;
+            margin-top: 0.5rem;
+        }
+        .faq-bot-reply.visible { display: block; }
+
+        /* FAQ CTA */
+        .faq-cta {
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 16px;
+            padding: 1.6rem 1.4rem;
+            color: #fff;
+        }
+        .faq-cta p { margin: 0 0 1rem; font-size: 1rem; opacity: 0.95; }
+        .faq-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #fff;
+            color: #128C7E;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.65rem 1.6rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
+        .faq-cta a:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
         .reviews-section {
             background: linear-gradient(160deg, #FAF0E0 0%, #F5E6D0 100%);
             padding: 3rem 1rem;
@@ -2497,6 +2669,117 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section animate-on-scroll">
+        <div style="text-align:center;margin-bottom:2.5rem;">
+            <p class="section-label" data-i18n="faqLabel">Quick Answers</p>
+            <h2 class="section-title" data-i18n="faqTitle">Frequently Asked Questions</h2>
+        </div>
+
+        <!-- 7 FAQ Items -->
+        <div class="faq-grid">
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-i18n="faq1q">Where does the tour start and end?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq1a">Tours start and end at your hotel or a central meeting point in Lisbon, Sintra, or Cascais — whichever is most convenient for you. For the Sintra Half Day tour, pick-up is at Sintra Train Station. Drop-off is always at your hotel or the agreed location.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-i18n="faq2q">Are monument tickets included in the tour price?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq2a">Monument entrance tickets are not included in the tour price — they are optional and paid separately on the day. This gives you full flexibility to choose which monuments you'd like to visit. I'll guide you on the best options and current prices for each destination.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-i18n="faq3q">What is the cancellation policy?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq3a">Free cancellation up to 48 hours before the tour. If you cancel less than 48h before the start time, the deposit is non-refundable. For changes or questions, please contact me directly via WhatsApp as soon as possible.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-i18n="faq4q">How does the 50€ deposit work?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq4a">To confirm your booking, a 50€ deposit is required via PayPal. This amount is fully deducted from the total tour price on the day. The remaining balance is paid in cash or by card directly to me at the end of the tour.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-i18n="faq5q">Are prices per person or per group?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq5a">All tour prices are per group, not per person. Whether you're 1 or 6 people, you pay the same group rate. This makes private tours excellent value for families, couples, and small groups. For groups of 7 or more, contact me for a custom quote.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-i18n="faq6q">Is there time for lunch during the tour?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq6a">Absolutely! All full-day tours include a relaxed lunch break at a local restaurant I recommend — authentic cuisine at the best local spots, away from tourist traps. Lunch costs are not included in the tour price. For the Arrábida tour, lunch at Portinho da Arrábida is part of the experience.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-i18n="faq7q">Can I customise the itinerary?</span>
+                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                    <p data-i18n="faq7a">Yes! Every tour can be tailored to your interests and pace. You can also build a fully custom tour using the interactive map on this page. Just let me know what you'd like to see and I'll create the perfect itinerary for you.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Inline Quick-Answer Bot -->
+        <div class="faq-bot">
+            <div class="faq-bot-header">
+                <div class="faq-bot-avatar">🧭</div>
+                <div>
+                    <div class="faq-bot-name" data-i18n="faqBotName">Carlos' Quick Answers</div>
+                    <div class="faq-bot-status" data-i18n="faqBotStatus">Ask me anything about the tours</div>
+                </div>
+            </div>
+            <div class="faq-bot-body">
+                <div class="faq-bot-bubble" data-i18n="faqBotGreet">Hi! 👋 What would you like to know?</div>
+                <div class="faq-bot-options">
+                    <button class="faq-bot-btn" onclick="showFaqBotReply('book', this)" data-i18n="faqBotBtn1">📅 How do I book?</button>
+                    <button class="faq-bot-btn" onclick="showFaqBotReply('included', this)" data-i18n="faqBotBtn2">✅ What's included?</button>
+                </div>
+                <div class="faq-bot-reply" id="faqBotReply"></div>
+            </div>
+        </div>
+
+        <!-- CTA WhatsApp -->
+        <div class="faq-cta">
+            <p data-i18n="faqCtaText">Still have questions? I'm happy to help personally!</p>
+            <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i>
+                <span data-i18n="faqCtaBtn">Chat with Carlos on WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
     <!-- Reviews -->
     <section class="reviews-section">
         <div style="text-align:center;margin-bottom:3rem;">
@@ -2721,6 +3004,32 @@
             bringText:       "Comfortable walking shoes, a light jacket, and your camera!",
             footerSub:       "Premium Tour Guide in Portugal & Spain",
             reviewsTitle:    "What Our Guests Say",
+            // FAQ
+            faqLabel:        "Quick Answers",
+            faqTitle:        "Frequently Asked Questions",
+            faq1q: "Where does the tour start and end?",
+            faq1a: "Tours start and end at your hotel or a central meeting point in Lisbon, Sintra, or Cascais — whichever is most convenient for you. For the Sintra Half Day tour, pick-up is at Sintra Train Station. Drop-off is always at your hotel or the agreed location.",
+            faq2q: "Are monument tickets included in the tour price?",
+            faq2a: "Monument entrance tickets are not included in the tour price — they are optional and paid separately on the day. This gives you full flexibility to choose which monuments you'd like to visit. I'll guide you on the best options and current prices for each destination.",
+            faq3q: "What is the cancellation policy?",
+            faq3a: "Free cancellation up to 48 hours before the tour. If you cancel less than 48h before the start time, the deposit is non-refundable. For changes or questions, please contact me directly via WhatsApp as soon as possible.",
+            faq4q: "How does the 50€ deposit work?",
+            faq4a: "To confirm your booking, a 50€ deposit is required via PayPal. This amount is fully deducted from the total tour price on the day. The remaining balance is paid in cash or by card directly to me at the end of the tour.",
+            faq5q: "Are prices per person or per group?",
+            faq5a: "All tour prices are per group, not per person. Whether you're 1 or 6 people, you pay the same group rate. This makes private tours excellent value for families, couples, and small groups. For groups of 7 or more, contact me for a custom quote.",
+            faq6q: "Is there time for lunch during the tour?",
+            faq6a: "Absolutely! All full-day tours include a relaxed lunch break at a local restaurant I recommend — authentic cuisine at the best local spots, away from tourist traps. Lunch costs are not included in the tour price. For the Arrábida tour, lunch at Portinho da Arrábida is part of the experience.",
+            faq7q: "Can I customise the itinerary?",
+            faq7a: "Yes! Every tour can be tailored to your interests and pace. You can also build a fully custom tour using the interactive map on this page. Just let me know what you'd like to see and I'll create the perfect itinerary for you.",
+            faqBotName:   "Carlos' Quick Answers",
+            faqBotStatus: "Ask me anything about the tours",
+            faqBotGreet:  "Hi! 👋 What would you like to know?",
+            faqBotBtn1:   "📅 How do I book?",
+            faqBotBtn2:   "✅ What's included?",
+            faqBotBook:   "To book a tour: choose your tour below, select your group size and date, pay the 50€ deposit via PayPal, and you're confirmed! You'll also receive a WhatsApp message from me to finalise the details. 😊",
+            faqBotIncluded: "Every tour includes: private transport in a comfortable van, my personal guide service throughout, hotel pick-up and drop-off, and local restaurant recommendations. Not included: monument tickets (optional), meals and personal expenses.",
+            faqCtaText:   "Still have questions? I'm happy to help personally!",
+            faqCtaBtn:    "Chat with Carlos on WhatsApp",
             footerRights:    "All Rights Reserved.",
             // Gallery
             tourMomentsTitle:  "Tour Moments",
@@ -2865,6 +3174,32 @@
             bringText:       "Sapatos confortáveis, um casaco leve e a sua câmara!",
             footerSub:       "Guia Turístico Premium em Portugal & Espanha",
             reviewsTitle:    "O Que Dizem os Nossos Clientes",
+            // FAQ
+            faqLabel:        "Respostas Rápidas",
+            faqTitle:        "Perguntas Frequentes",
+            faq1q: "Onde começa e termina o tour?",
+            faq1a: "Os tours começam e terminam no seu hotel ou num ponto central em Lisboa, Sintra ou Cascais — o que for mais conveniente para si. Para o tour Sintra Half Day, o pick-up é na Estação de Comboios de Sintra. O drop-off é sempre no hotel ou no local acordado.",
+            faq2q: "Os bilhetes dos monumentos estão incluídos no preço?",
+            faq2a: "Os bilhetes de entrada nos monumentos não estão incluídos no preço do tour — são opcionais e pagos separadamente no dia. Isto dá-lhe total flexibilidade para escolher os monumentos que pretende visitar. Orientarei sobre as melhores opções e preços actuais em cada destino.",
+            faq3q: "Qual é a política de cancelamento?",
+            faq3a: "Cancelamento gratuito até 48 horas antes do tour. Se cancelar com menos de 48h de antecedência, o depósito não é reembolsável. Para alterações ou dúvidas, contacte-me directamente pelo WhatsApp o mais cedo possível.",
+            faq4q: "Como funciona o depósito de 50€?",
+            faq4a: "Para confirmar a sua reserva, é necessário um depósito de 50€ via PayPal. Este valor é totalmente descontado do preço total do tour no dia. O restante é pago em numerário ou cartão directamente a mim no final do tour.",
+            faq5q: "Os preços são por pessoa ou por grupo?",
+            faq5a: "Todos os preços são por grupo, não por pessoa. Seja 1 ou 6 pessoas, paga a mesma tarifa de grupo. Isto torna os tours privados excelente valor para famílias, casais e pequenos grupos. Para grupos de 7 ou mais, contacte-me para um orçamento personalizado.",
+            faq6q: "Há tempo para almoço durante o tour?",
+            faq6a: "Claro! Todos os tours de dia completo incluem uma pausa relaxada para almoço num restaurante local que recomendo — culinária autêntica nos melhores sítios, longe das armadilhas turísticas. O custo do almoço não está incluído no preço do tour. No tour da Arrábida, o almoço em Portinho da Arrábida faz parte da experiência.",
+            faq7q: "Posso personalizar o itinerário?",
+            faq7a: "Sim! Cada tour pode ser adaptado aos seus interesses e ritmo. Pode também criar um tour completamente personalizado usando o mapa interactivo nesta página. Diga-me o que gostaria de ver e crio o itinerário perfeito para si.",
+            faqBotName:   "Respostas Rápidas do Carlos",
+            faqBotStatus: "Pergunta-me sobre os tours",
+            faqBotGreet:  "Olá! 👋 O que gostaria de saber?",
+            faqBotBtn1:   "📅 Como reservo?",
+            faqBotBtn2:   "✅ O que está incluído?",
+            faqBotBook:   "Para reservar: escolha o tour, seleccione o tamanho do grupo e a data, pague o depósito de 50€ via PayPal e está confirmado! Também recebe uma mensagem minha pelo WhatsApp para finalizar os detalhes. 😊",
+            faqBotIncluded: "Cada tour inclui: transporte privado numa van confortável, serviço de guia pessoal, pick-up e drop-off no hotel e recomendações de restaurantes locais. Não incluído: bilhetes de monumentos (opcionais), refeições e despesas pessoais.",
+            faqCtaText:   "Ainda tem dúvidas? Fico feliz em ajudar pessoalmente!",
+            faqCtaBtn:    "Falar com o Carlos no WhatsApp",
             footerRights:    "Todos os Direitos Reservados.",
             // Gallery
             tourMomentsTitle:  "Momentos dos Tours",
@@ -3009,6 +3344,32 @@
             bringText:       "Zapatos cómodos, una chaqueta ligera y tu cámara.",
             footerSub:       "Guía Turístico Premium en Portugal & España",
             reviewsTitle:    "Lo Que Dicen Nuestros Clientes",
+            // FAQ
+            faqLabel:        "Respuestas Rápidas",
+            faqTitle:        "Preguntas Frecuentes",
+            faq1q: "¿Dónde empieza y termina el tour?",
+            faq1a: "Los tours comienzan y terminan en su hotel o en un punto de encuentro central en Lisboa, Sintra o Cascaes — lo que sea más conveniente para usted. Para el tour Sintra Half Day, la recogida es en la Estación de Tren de Sintra. El regreso es siempre en el hotel o en el lugar acordado.",
+            faq2q: "¿Están incluidas las entradas a monumentos en el precio?",
+            faq2a: "Las entradas a los monumentos no están incluidas en el precio del tour — son opcionales y se pagan por separado el día. Esto le da total flexibilidad para elegir qué monumentos desea visitar. Le orientaré sobre las mejores opciones y precios actuales en cada destino.",
+            faq3q: "¿Cuál es la política de cancelación?",
+            faq3a: "Cancelación gratuita hasta 48 horas antes del tour. Si cancela con menos de 48h de antelación, el depósito no es reembolsable. Para cambios o preguntas, contácteme directamente por WhatsApp lo antes posible.",
+            faq4q: "¿Cómo funciona el depósito de 50€?",
+            faq4a: "Para confirmar su reserva, se requiere un depósito de 50€ vía PayPal. Este importe se descuenta íntegramente del precio total del tour el día. El resto se paga en efectivo o con tarjeta directamente a mí al final del tour.",
+            faq5q: "¿Los precios son por persona o por grupo?",
+            faq5a: "Todos los precios son por grupo, no por persona. Tanto si son 1 como 6 personas, pagan la misma tarifa de grupo. Esto hace que los tours privados sean excelente valor para familias, parejas y grupos pequeños. Para grupos de 7 o más, contácteme para un presupuesto personalizado.",
+            faq6q: "¿Hay tiempo para almorzar durante el tour?",
+            faq6a: "¡Por supuesto! Todos los tours de día completo incluyen una pausa relajada para almorzar en un restaurante local que recomiendo — cocina auténtica en los mejores sitios, lejos de las trampas turísticas. El coste del almuerzo no está incluido en el precio del tour. En el tour de Arrábida, el almuerzo en Portinho da Arrábida forma parte de la experiencia.",
+            faq7q: "¿Puedo personalizar el itinerario?",
+            faq7a: "¡Sí! Cada tour puede adaptarse a sus intereses y ritmo. También puede crear un tour completamente personalizado usando el mapa interactivo de esta página. Dígame qué le gustaría ver y crearé el itinerario perfecto para usted.",
+            faqBotName:   "Respuestas Rápidas de Carlos",
+            faqBotStatus: "Pregúntame sobre los tours",
+            faqBotGreet:  "¡Hola! 👋 ¿Qué le gustaría saber?",
+            faqBotBtn1:   "📅 ¿Cómo reservo?",
+            faqBotBtn2:   "✅ ¿Qué está incluido?",
+            faqBotBook:   "Para reservar: elija el tour, seleccione el tamaño del grupo y la fecha, pague el depósito de 50€ vía PayPal y ¡listo! También recibirá un mensaje mío por WhatsApp para finalizar los detalles. 😊",
+            faqBotIncluded: "Cada tour incluye: transporte privado en una cómoda furgoneta, servicio de guía personal, recogida y regreso al hotel y recomendaciones de restaurantes locales. No incluido: entradas a monumentos (opcionales), comidas y gastos personales.",
+            faqCtaText:   "¿Aún tiene preguntas? ¡Estaré encantado de ayudarle personalmente!",
+            faqCtaBtn:    "Chatear con Carlos en WhatsApp",
             footerRights:    "Todos los Derechos Reservados.",
             // Gallery
             tourMomentsTitle:  "Momentos de los Tours",
@@ -3153,6 +3514,32 @@
             bringText:       "Scarpe comode, una giacca leggera e la tua fotocamera!",
             footerSub:       "Guida Turistica Premium in Portogallo & Spagna",
             reviewsTitle:    "Cosa Dicono i Nostri Ospiti",
+            // FAQ
+            faqLabel:        "Risposte Rapide",
+            faqTitle:        "Domande Frequenti",
+            faq1q: "Dove inizia e finisce il tour?",
+            faq1a: "I tour iniziano e finiscono al vostro hotel o in un punto d'incontro centrale a Lisbona, Sintra o Cascais — quello più comodo per voi. Per il tour Sintra Half Day, il pick-up è alla Stazione Ferroviaria di Sintra. Il drop-off è sempre all'hotel o nel luogo concordato.",
+            faq2q: "I biglietti dei monumenti sono inclusi nel prezzo?",
+            faq2a: "I biglietti d'ingresso ai monumenti non sono inclusi nel prezzo del tour — sono opzionali e si pagano separatamente il giorno stesso. Questo vi dà piena flessibilità per scegliere quali monumenti visitare. Vi guiderò sulle migliori opzioni e i prezzi attuali per ogni destinazione.",
+            faq3q: "Qual è la politica di cancellazione?",
+            faq3a: "Cancellazione gratuita fino a 48 ore prima del tour. Se si cancella con meno di 48h di preavviso, il deposito non è rimborsabile. Per modifiche o domande, contattatemi direttamente via WhatsApp il prima possibile.",
+            faq4q: "Come funziona il deposito di 50€?",
+            faq4a: "Per confermare la prenotazione è richiesto un deposito di 50€ tramite PayPal. Questo importo viene interamente detratto dal prezzo totale del tour il giorno stesso. Il saldo viene pagato in contanti o con carta direttamente a me alla fine del tour.",
+            faq5q: "I prezzi sono a persona o per gruppo?",
+            faq5a: "Tutti i prezzi sono per gruppo, non a persona. Che siate 1 o 6 persone, pagate la stessa tariffa di gruppo. Questo rende i tour privati un ottimo valore per famiglie, coppie e piccoli gruppi. Per gruppi di 7 o più, contattatemi per un preventivo personalizzato.",
+            faq6q: "C'è tempo per pranzo durante il tour?",
+            faq6a: "Assolutamente! Tutti i tour della giornata intera includono una pausa pranzo rilassata in un ristorante locale che raccomando — cucina autentica nei posti migliori, lontano dalle trappole turistiche. Il costo del pranzo non è incluso nel prezzo del tour. Per il tour dell'Arrábida, il pranzo a Portinho da Arrábida fa parte dell'esperienza.",
+            faq7q: "Posso personalizzare l'itinerario?",
+            faq7a: "Sì! Ogni tour può essere adattato ai vostri interessi e al vostro ritmo. Potete anche creare un tour completamente personalizzato usando la mappa interattiva su questa pagina. Ditemi cosa vorreste vedere e creerò l'itinerario perfetto per voi.",
+            faqBotName:   "Risposte Rapide di Carlos",
+            faqBotStatus: "Chiedimi dei tour",
+            faqBotGreet:  "Ciao! 👋 Cosa vorreste sapere?",
+            faqBotBtn1:   "📅 Come prenoto?",
+            faqBotBtn2:   "✅ Cosa è incluso?",
+            faqBotBook:   "Per prenotare: scegliete il tour, selezionate la dimensione del gruppo e la data, pagate il deposito di 50€ tramite PayPal e siete confermati! Riceverete anche un mio messaggio su WhatsApp per finalizzare i dettagli. 😊",
+            faqBotIncluded: "Ogni tour include: trasporto privato in un comodo van, servizio di guida personale per tutto il giorno, pick-up e drop-off in hotel e raccomandazioni di ristoranti locali. Non incluso: biglietti d'ingresso ai monumenti (opzionali), pasti e spese personali.",
+            faqCtaText:   "Avete ancora domande? Sono felice di aiutarvi personalmente!",
+            faqCtaBtn:    "Chatta con Carlos su WhatsApp",
             footerRights:    "Tutti i Diritti Riservati.",
             // Gallery
             tourMomentsTitle:  "Momenti dei Tour",
@@ -3749,6 +4136,33 @@
     const PAX_LABELS = { 2: '1-2', 4: '3-4', 6: '5-6' };
 
     function paxDisplay(pax) { return PAX_LABELS[pax] || pax; }
+
+    // ── FAQ Section ──
+    function toggleFaq(btn) {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        // Open clicked if it was closed
+        if (!isOpen) item.classList.add('open');
+    }
+
+    function showFaqBotReply(type, btn) {
+        const lang = currentLang || 'en';
+        const t = translations[lang] || translations.en;
+        const replyEl = document.getElementById('faqBotReply');
+        const text = type === 'book' ? t.faqBotBook : t.faqBotIncluded;
+        // Toggle active state
+        document.querySelectorAll('.faq-bot-btn').forEach(b => b.classList.remove('active'));
+        if (replyEl.classList.contains('visible') && replyEl.dataset.type === type) {
+            replyEl.classList.remove('visible');
+            return;
+        }
+        btn.classList.add('active');
+        replyEl.textContent = text;
+        replyEl.dataset.type = type;
+        replyEl.classList.add('visible');
+    }
 
     function openBookingModal(tourId) {
         currentTour = tourId;
