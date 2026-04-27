@@ -478,24 +478,46 @@
         .tour-pricing {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            gap: 0.75rem;
             background: var(--bg-light);
-            padding: 1rem;
-            border-radius: 12px;
+            padding: 1rem 1rem 0.75rem;
+            border-radius: 12px 12px 0 0;
             text-align: center;
+            max-width: 360px;
+            margin: 0 auto;
         }
         .price-box { display: flex; flex-direction: column; }
         .price-pax { font-size: 0.78rem; color: #777; margin-bottom: 0.2rem; }
-        .price-box-group {
-            border: 2px dashed var(--terracotta);
-            background: rgba(200,90,50,0.06);
-            cursor: pointer;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.2s;
+        .price-box-group-wrap {
+            background: var(--bg-light);
+            border-radius: 0 0 12px 12px;
+            padding: 0 1rem 1rem;
+            max-width: 360px;
+            margin: 0 auto;
         }
-        .price-box-group:hover { background: rgba(200,90,50,0.15); transform: translateY(-2px); }
-        .price-box-group .price-pax { color: var(--terracotta); font-weight: 600; }
-        .price-box-group .price-val { font-size: 0.78rem; color: var(--terracotta); }
+        .price-box-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            width: 100%;
+            padding: 0.55rem 1rem;
+            border: 1.5px dashed var(--terracotta);
+            border-radius: 10px;
+            background: rgba(200,90,50,0.05);
+            color: var(--terracotta);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .price-box-group:hover {
+            background: rgba(200,90,50,0.13);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(200,90,50,0.18);
+        }
+        .price-box-group .wa-icon { font-size: 1rem; }
+        .price-box-group .pax7-text { opacity: 0.75; font-size: 0.78rem; font-weight: 400; }
         .pax-btn-wa {
             background: #25D366;
             color: white;
@@ -1935,9 +1957,14 @@
                             <div class="price-box"><span class="price-pax" data-i18n="pax2">1-2 Pax</span><span class="price-val">270€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax4">3-4 Pax</span><span class="price-val">290€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax6">5-6 Pax</span><span class="price-val">310€</span></div>
-                            <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box price-box-group"><span class="price-pax" data-i18n="pax7plus">7+ Pax</span><span class="price-val" data-i18n="pax7quote">Ask for quote</span></a>
                         </div>
                     </div>
+                    <div class="price-box-group-wrap">
+                        <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box-group">
+                            <span class="wa-icon">🟢</span>
+                            <span>7+ <span data-i18n="pax7plus">Pax</span></span>
+                            <span class="pax7-text">— <span data-i18n="pax7quote">Ask for quote</span></span>
+                        </a>
                     <p style="font-size:0.78rem;color:var(--terracotta);text-align:center;margin:0.4rem 0 0.6rem;font-style:italic;">
                         <i class="fas fa-route"></i> <span data-i18n="sintraPickupNote">Pick up em Sintra e drop off em Cascais disponíveis com desconto de 60€ (Ask me why 😉)</span>
                     </p>
@@ -1987,9 +2014,14 @@
                             <div class="price-box"><span class="price-pax" data-i18n="pax2">1-2 Pax</span><span class="price-val">170€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax4">3-4 Pax</span><span class="price-val">200€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax6">5-6 Pax</span><span class="price-val">220€</span></div>
-                            <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box price-box-group"><span class="price-pax" data-i18n="pax7plus">7+ Pax</span><span class="price-val" data-i18n="pax7quote">Ask for quote</span></a>
                         </div>
                     </div>
+                    <div class="price-box-group-wrap">
+                        <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box-group">
+                            <span class="wa-icon">🟢</span>
+                            <span>7+ <span data-i18n="pax7plus">Pax</span></span>
+                            <span class="pax7-text">— <span data-i18n="pax7quote">Ask for quote</span></span>
+                        </a>
                     <div class="tour-info-group">
                         <div class="tour-info-title"><i class="fas fa-map-pin"></i> <span data-i18n="pickupLabel">Pick-up</span></div>
                         <p class="tour-locations" data-i18n="sintraHalfPickup">Sintra Train Station</p>
@@ -2044,8 +2076,14 @@
                             <div class="price-box"><span class="price-pax" data-i18n="pax2">1-2 Pax</span><span class="price-val">290€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax4">3-4 Pax</span><span class="price-val">330€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax6">5-6 Pax</span><span class="price-val">350€</span></div>
-                            <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box price-box-group"><span class="price-pax" data-i18n="pax7plus">7+ Pax</span><span class="price-val" data-i18n="pax7quote">Ask for quote</span></a>
                         </div>
+                    </div>
+                    <div class="price-box-group-wrap">
+                        <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box-group">
+                            <span class="wa-icon">🟢</span>
+                            <span>7+ <span data-i18n="pax7plus">Pax</span></span>
+                            <span class="pax7-text">— <span data-i18n="pax7quote">Ask for quote</span></span>
+                        </a>
                     </div>
                     <button onclick="openBookingModal('lisbon')" class="btn-book">
                         <i class="fas fa-calendar-check"></i> <span data-i18n="bookBtn">Book This Tour</span>
@@ -2093,9 +2131,14 @@
                             <div class="price-box"><span class="price-pax" data-i18n="pax2">1-2 Pax</span><span class="price-val">170€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax4">3-4 Pax</span><span class="price-val">200€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax6">5-6 Pax</span><span class="price-val">220€</span></div>
-                            <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box price-box-group"><span class="price-pax" data-i18n="pax7plus">7+ Pax</span><span class="price-val" data-i18n="pax7quote">Ask for quote</span></a>
                         </div>
                     </div>
+                    <div class="price-box-group-wrap">
+                        <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box-group">
+                            <span class="wa-icon">🟢</span>
+                            <span>7+ <span data-i18n="pax7plus">Pax</span></span>
+                            <span class="pax7-text">— <span data-i18n="pax7quote">Ask for quote</span></span>
+                        </a>
                     <div class="tour-info-group">
                         <div class="tour-info-title"><i class="fas fa-map-pin"></i> <span data-i18n="pickupLabel">Pick-up</span></div>
                         <p class="tour-locations" data-i18n="lisbonHalfPickup">Your preferred location in Lisbon</p>
@@ -2150,8 +2193,14 @@
                             <div class="price-box"><span class="price-pax" data-i18n="pax2">1-2 Pax</span><span class="price-val">430€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax4">3-4 Pax</span><span class="price-val">470€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax6">5-6 Pax</span><span class="price-val">510€</span></div>
-                            <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box price-box-group"><span class="price-pax" data-i18n="pax7plus">7+ Pax</span><span class="price-val" data-i18n="pax7quote">Ask for quote</span></a>
                         </div>
+                    </div>
+                    <div class="price-box-group-wrap">
+                        <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box-group">
+                            <span class="wa-icon">🟢</span>
+                            <span>7+ <span data-i18n="pax7plus">Pax</span></span>
+                            <span class="pax7-text">— <span data-i18n="pax7quote">Ask for quote</span></span>
+                        </a>
                     </div>
                     <button onclick="openBookingModal('fatima')" class="btn-book">
                         <i class="fas fa-calendar-check"></i> <span data-i18n="bookBtn">Book This Tour</span>
@@ -2203,8 +2252,14 @@
                             <div class="price-box"><span class="price-pax" data-i18n="pax2">1-2 Pax</span><span class="price-val">290€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax4">3-4 Pax</span><span class="price-val">330€</span></div>
                             <div class="price-box"><span class="price-pax" data-i18n="pax6">5-6 Pax</span><span class="price-val">350€</span></div>
-                            <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box price-box-group"><span class="price-pax" data-i18n="pax7plus">7+ Pax</span><span class="price-val" data-i18n="pax7quote">Ask for quote</span></a>
                         </div>
+                    </div>
+                    <div class="price-box-group-wrap">
+                        <a href="https://wa.me/351933302031" target="_blank" rel="noopener noreferrer" class="price-box-group">
+                            <span class="wa-icon">🟢</span>
+                            <span>7+ <span data-i18n="pax7plus">Pax</span></span>
+                            <span class="pax7-text">— <span data-i18n="pax7quote">Ask for quote</span></span>
+                        </a>
                     </div>
                     <button onclick="openBookingModal('arrabida')" class="btn-book">
                         <i class="fas fa-calendar-check"></i> <span data-i18n="bookBtn">Book This Tour</span>
