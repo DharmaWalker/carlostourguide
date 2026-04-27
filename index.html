@@ -2782,18 +2782,20 @@
 
         <!-- Inline Quick-Answer Bot -->
         <div class="faq-bot">
-            <div class="faq-bot-header">
+            <div class="faq-bot-header" onclick="toggleChat()" style="cursor:pointer;" title="Open chat">
                 <div class="faq-bot-avatar">🧭</div>
                 <div>
                     <div class="faq-bot-name" data-i18n="faqBotName">Carlos' Quick Answers</div>
                     <div class="faq-bot-status" data-i18n="faqBotStatus">Ask me anything about the tours</div>
                 </div>
+                <div style="margin-left:auto;font-size:1.1rem;opacity:0.7;">💬</div>
             </div>
             <div class="faq-bot-body">
                 <div class="faq-bot-bubble" data-i18n="faqBotGreet">Hi! 👋 What would you like to know?</div>
                 <div class="faq-bot-options">
                     <button class="faq-bot-btn" onclick="showFaqBotReply('book', this)" data-i18n="faqBotBtn1">📅 How do I book?</button>
                     <button class="faq-bot-btn" onclick="showFaqBotReply('included', this)" data-i18n="faqBotBtn2">✅ What's included?</button>
+                    <button class="faq-bot-btn" onclick="showFaqBotReply('tickets', this)" data-i18n="faqBotBtn3">🎟 Should I buy tickets in advance?</button>
                 </div>
                 <div class="faq-bot-reply" id="faqBotReply"></div>
             </div>
@@ -3057,7 +3059,8 @@
             faqBotGreet:  "Hi! 👋 What would you like to know?",
             faqBotBtn1:   "📅 How do I book?",
             faqBotBtn2:   "✅ What's included?",
-            faqBotBook:   "To book: choose your tour, select your group size and date, then pay the 50€ deposit via PayPal or Credit Card — your spot is confirmed! I'll send you a WhatsApp message to finalise all the details. 😊",
+            faqBotBtn3:   "🎟 Should I buy tickets in advance?",
+            faqBotTickets: "Carlos can help you with the links or buy the tickets himself and you can pay them at the end of the tour. We choose the best time slot to avoid most of the lines and adapt to the tour flow.",
             faqBotIncluded: "Every tour includes: private transport in a comfortable van, my personal guide service throughout the day, hotel pick-up and drop-off, and authentic restaurant recommendations. Not included: monument tickets (optional, paid on the day), meals and personal expenses.",
             faqCtaText:   "Got more questions? Let's talk!",
             faqCtaBtn:    "Chat with Carlos on WhatsApp",
@@ -3229,7 +3232,8 @@
             faqBotGreet:  "Olá! 👋 O que gostaria de saber?",
             faqBotBtn1:   "📅 Como reservo?",
             faqBotBtn2:   "✅ O que está incluído?",
-            faqBotBook:   "Para reservar: escolha o tour, o tamanho do grupo e a data, pague o depósito de 50€ via PayPal ou Cartão — a sua reserva fica confirmada! Envio-lhe uma mensagem pelo WhatsApp para finalizar todos os detalhes. 😊",
+            faqBotBtn3:   "🎟 Devo comprar bilhetes com antecedência?",
+            faqBotTickets: "O Carlos pode ajudá-lo com os links ou comprar os bilhetes ele mesmo e pagar no final do tour. Escolhemos o melhor horário para evitar as filas e adaptar à gestão do tour.",
             faqBotIncluded: "Cada tour inclui: transporte privado numa van confortável, serviço de guia pessoal durante todo o dia, recolha e entrega no hotel, e recomendações de restaurantes autênticos. Não incluído: bilhetes de monumentos (opcionais, pagos no dia), refeições e despesas pessoais.",
             faqCtaText:   "Tem mais perguntas? Vamos conversar!",
             faqCtaBtn:    "Falar com o Carlos no WhatsApp",
@@ -3401,6 +3405,8 @@
             faqBotGreet:  "¡Hola! 👋 ¿Qué le gustaría saber?",
             faqBotBtn1:   "📅 ¿Cómo reservo?",
             faqBotBtn2:   "✅ ¿Qué está incluido?",
+            faqBotBtn3:   "🎟 ¿Debo comprar entradas con antelación?",
+            faqBotTickets: "Carlos puede ayudarle con los enlaces o comprar las entradas él mismo y pagarlas al final del tour. Elegimos el mejor horario para evitar las colas y adaptarnos a la gestión del tour.",
             faqBotBook:   "Para reservar: elija el tour, el tamaño del grupo y la fecha, pague el depósito de 50€ vía PayPal o Tarjeta — ¡su reserva queda confirmada! Le enviaré un mensaje por WhatsApp para finalizar todos los detalles. 😊",
             faqBotIncluded: "Cada tour incluye: transporte privado en una cómoda furgoneta, servicio de guía personal durante todo el día, recogida y regreso al hotel, y recomendaciones de restaurantes auténticos. No incluido: entradas a monumentos (opcionales, se pagan el día), comidas y gastos personales.",
             faqCtaText:   "¿Tiene más preguntas? ¡Hablemos!",
@@ -3573,6 +3579,8 @@
             faqBotGreet:  "Ciao! 👋 Cosa vorreste sapere?",
             faqBotBtn1:   "📅 Come prenoto?",
             faqBotBtn2:   "✅ Cosa è incluso?",
+            faqBotBtn3:   "🎟 Devo comprare i biglietti in anticipo?",
+            faqBotTickets: "Carlos può aiutarvi con i link o acquistare i biglietti lui stesso e pagarli alla fine del tour. Scegliamo il miglior orario per evitare le code e adattarci alla gestione del tour.",
             faqBotBook:   "Per prenotare: scegliete il tour, il gruppo e la data, pagate il deposito di 50€ tramite PayPal o Carta — la prenotazione è confermata! Vi invierò un messaggio su WhatsApp per finalizzare tutti i dettagli. 😊",
             faqBotIncluded: "Ogni tour include: trasporto privato in un comodo van, servizio di guida personale per tutta la giornata, pick-up e drop-off in hotel, e raccomandazioni di ristoranti autentici. Non incluso: biglietti d'ingresso ai monumenti (opzionali, pagati il giorno stesso), pasti e spese personali.",
             faqCtaText:   "Avete altre domande? Parliamone!",
@@ -4188,7 +4196,7 @@
         const lang = currentLang || 'en';
         const t = translations[lang] || translations.en;
         const replyEl = document.getElementById('faqBotReply');
-        const text = type === 'book' ? t.faqBotBook : t.faqBotIncluded;
+        const text = type === 'book' ? t.faqBotBook : type === 'tickets' ? t.faqBotTickets : t.faqBotIncluded;
         // Toggle active state
         document.querySelectorAll('.faq-bot-btn').forEach(b => b.classList.remove('active'));
         if (replyEl.classList.contains('visible') && replyEl.dataset.type === type) {
