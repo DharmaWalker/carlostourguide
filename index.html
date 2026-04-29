@@ -1276,6 +1276,27 @@
         .btn-quote-wa:hover { background: #1ebc5a; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.3); }
         .btn-quote-wa:disabled { background: #aaa; cursor: not-allowed; transform: none; box-shadow: none; }
 
+        /* ── Pax selector (map) ── */
+        .map-pax-row { margin-bottom: 1rem; }
+        .map-pax-label { font-size: 0.8rem; font-weight: 600; color: var(--azulejo-blue); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.45rem; display: block; }
+        .pax-selector { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .pax-btn {
+            flex: 1; min-width: 56px;
+            padding: 0.55rem 0.4rem;
+            border: 2px solid var(--azulejo-blue);
+            border-radius: 8px;
+            background: white;
+            color: var(--azulejo-blue);
+            font-size: 0.82rem; font-weight: 600;
+            cursor: pointer;
+            transition: all 0.18s;
+            text-align: center;
+        }
+        .pax-btn:hover { background: var(--azulejo-blue); color: white; }
+        .pax-btn.active { background: var(--azulejo-blue); color: white; border-color: var(--azulejo-blue); }
+        .pax-btn.pax-7plus { border-color: #25d366; color: #1a9e4e; }
+        .pax-btn.pax-7plus:hover, .pax-btn.pax-7plus.active { background: #25d366; color: white; border-color: #25d366; }
+
         /* Leaflet marker overrides */
         .leaflet-marker-selected { filter: hue-rotate(180deg) brightness(1.2); }
         .dest-popup { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; text-align: center; }
@@ -2527,6 +2548,16 @@
                     <p class="quote-disclaimer" data-i18n="quoteDisclaimer">Approximate price — final quote on request</p>
                 </div>
 
+                <div class="map-pax-row">
+                    <label class="map-pax-label" data-i18n="mapPaxLabel">Group Size</label>
+                    <div class="pax-selector">
+                        <button class="pax-btn" data-pax="1-2" onclick="selectMapPax(this)" data-i18n="pax2">1-2 Pax</button>
+                        <button class="pax-btn" data-pax="3-4" onclick="selectMapPax(this)" data-i18n="pax4">3-4 Pax</button>
+                        <button class="pax-btn" data-pax="5-6" onclick="selectMapPax(this)" data-i18n="pax6">5-6 Pax</button>
+                        <button class="pax-btn pax-7plus" data-pax="7+" onclick="selectMapPax7plus()" data-i18n="pax7plus">7+ Pax</button>
+                    </div>
+                </div>
+
                 <div class="map-date-row">
                     <label class="form-label" for="mapDate" style="font-size:0.8rem;font-weight:600;color:var(--azulejo-blue);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.45rem;display:block;" data-i18n="mapDateLabel">Preferred Date</label>
                     <input type="date" id="mapDate" class="map-date-input" style="width:100%;">
@@ -3133,6 +3164,7 @@
             quoteDisclaimer:    "Approximate price — final quote on request",
             quoteWaBtn:         "Request Quote via WhatsApp",
             mapDateLabel:       "Preferred Date",
+            mapPaxLabel:        "Group Size",
             // Chatbot
             chatStatus:         "Online · Typically replies instantly",
             chatPlaceholder:    "Ask me anything…",
@@ -3307,6 +3339,7 @@
             quoteDisclaimer:    "Preço aproximado — orçamento final sob consulta",
             quoteWaBtn:         "Pedir Orçamento via WhatsApp",
             mapDateLabel:       "Data Pretendida",
+            mapPaxLabel:        "Tamanho do Grupo",
             // Chatbot
             chatStatus:         "Online · Responde normalmente de imediato",
             chatPlaceholder:    "Pergunte-me qualquer coisa…",
@@ -3481,6 +3514,7 @@
             quoteDisclaimer:    "Precio aproximado — presupuesto final bajo consulta",
             quoteWaBtn:         "Solicitar Presupuesto por WhatsApp",
             mapDateLabel:       "Fecha Preferida",
+            mapPaxLabel:        "Tamaño del Grupo",
             // Chatbot
             chatStatus:         "Online · Responde normalmente de inmediato",
             chatPlaceholder:    "Pregúntame cualquier cosa…",
@@ -3655,6 +3689,7 @@
             quoteDisclaimer:    "Prezzo approssimativo — preventivo finale su richiesta",
             quoteWaBtn:         "Richiedi Preventivo via WhatsApp",
             mapDateLabel:       "Data Preferita",
+            mapPaxLabel:        "Dimensione del Gruppo",
             // Chatbot
             chatStatus:         "Online · Risponde normalmente subito",
             chatPlaceholder:    "Chiedimi qualsiasi cosa…",
@@ -4067,6 +4102,28 @@
                 : (t.quoteRulePerKm || `1€/km × ${totalKm} km`);
     }
 
+    let selectedMapPax = '';
+
+    function selectMapPax(btn) {
+        document.querySelectorAll('.pax-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedMapPax = btn.dataset.pax;
+    }
+
+    function selectMapPax7plus() {
+        const lang = document.documentElement.lang || 'en';
+        const ids  = [...selectedIds];
+        const destNames = ids.length ? ids.map(id => DESTINATIONS.find(x => x.id===id)?.name).filter(Boolean).join(', ') : '';
+        const destPart  = destNames ? `\n📍 Destinations: ${destNames}` : '';
+        const msg = {
+            en: `Hello Carlos! I'd like a quote for a custom tour with 7+ people.${destPart}\n\nCould you send me a price for a larger group? Thank you!`,
+            pt: `Olá Carlos! Gostaria de um orçamento para um tour personalizado com 7+ pessoas.${destPart}\n\nPodia enviar-me o preço para um grupo maior? Obrigado!`,
+            es: `¡Hola Carlos! Me gustaría un presupuesto para un tour personalizado con 7+ personas.${destPart}\n\n¿Podría enviarme el precio para un grupo más grande? ¡Gracias!`,
+            it: `Ciao Carlos! Vorrei un preventivo per un tour personalizzato con 7+ persone.${destPart}\n\nPotresti inviarmi il prezzo per un gruppo più grande? Grazie!`
+        };
+        window.open(`https://wa.me/351933302031?text=${encodeURIComponent(msg[lang] || msg.en)}`, '_blank', 'noopener');
+    }
+
     function sendQuoteWhatsApp() {
         const ids   = [...selectedIds];
         if (!ids.length) return;
@@ -4078,8 +4135,9 @@
         const { price }  = calcQuote(totalKm);
         const startDate  = document.getElementById('mapDate').value;
         const dateStr    = startDate ? `\n📅 Date: ${startDate}` : '';
+        const paxStr     = selectedMapPax ? `\n👥 Group size: ${selectedMapPax} people` : '';
 
-        const msg = `Hello Carlos! I'd like a quote for a custom tour.\n\n📍 Destinations: ${destNames}\n📏 Est. Distance: ~${totalKm} km\n💶 Est. Price: €${price}${dateStr}\n\nPlease send me a final quote. Thank you!`;
+        const msg = `Hello Carlos! I'd like a quote for a custom tour.\n\n📍 Destinations: ${destNames}\n📏 Est. Distance: ~${totalKm} km\n💶 Est. Price: €${price}${paxStr}${dateStr}\n\nPlease send me a final quote. Thank you!`;
         window.open(`https://wa.me/351933302031?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
     }
 
