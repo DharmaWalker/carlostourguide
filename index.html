@@ -2994,6 +2994,60 @@
 </div>
 </section>
 <!-- FAQ Section -->
+<!-- ===== GUIAS DIGITAIS ===== -->
+<section class="guides-section" id="self-guided">
+  <style>
+    .guides-section{background:var(--bg-light,#FDF5E6);padding:80px 20px}
+    .guides-wrap{max-width:1150px;margin:0 auto;text-align:center}
+    .guides-kicker{color:var(--terracotta,#C85A32);font-weight:700;letter-spacing:.15em;text-transform:uppercase;font-size:.8rem;margin-bottom:10px}
+    .guides-wrap h2{font-family:"Playfair Display",serif;color:var(--azulejo,#1A3C61);font-size:2.2rem;margin:0 0 14px}
+    .guides-intro{color:var(--text-dark,#2C3539);line-height:1.7;max-width:720px;margin:0 auto 40px}
+    .guides-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+    .guide-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.12);display:flex;flex-direction:column;text-align:left;transition:var(--transition)}
+    .guide-card:hover{transform:translateY(-4px)}
+    .guide-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+    .guide-body{padding:22px;display:flex;flex-direction:column;flex:1}
+    .guide-body h3{font-family:"Playfair Display",serif;color:var(--azulejo,#1A3C61);font-size:1.4rem;margin:0 0 8px}
+    .guide-body p{color:var(--text-dark,#2C3539);line-height:1.6;margin:0 0 18px;flex:1}
+    .guide-btn{display:inline-block;background:var(--terracotta,#C85A32);color:#fff;padding:12px 22px;border-radius:30px;text-decoration:none;font-weight:600;text-align:center;transition:var(--transition)}
+    .guide-btn:hover{background:var(--azulejo,#1A3C61)}
+    .guide-soon{display:inline-block;background:#e9e2d4;color:#6b7378;padding:12px 22px;border-radius:30px;font-weight:600;text-align:center}
+    .guides-note{margin-top:28px;font-size:.9rem;color:#6b7378}
+  </style>
+  <div class="guides-wrap">
+    <div class="guides-kicker" data-i18n="guidesKicker">Self-guided itineraries</div>
+    <h2 data-i18n="guidesTitle">Prefer to explore on your own?</h2>
+    <p class="guides-intro" data-i18n="guidesIntro">My one-day routes, the same ones I use with my private clients, ready to follow by public transport. PDF + EPUB in English, Spanish and Italian.</p>
+    <div class="guides-grid">
+      <div class="guide-card">
+        <img src="guia-sintra.jpg" alt="Sintra in One Day guide" loading="lazy">
+        <div class="guide-body">
+          <h3>Sintra in One Day</h3>
+          <p data-i18n="guideSintraText">Pena Palace, the Moorish Castle and Quinta da Regaleira, in the right order and with the right tickets.</p>
+          <a class="guide-btn" href="https://carlomofe.gumroad.com/l/sintra-one-day" target="_blank" rel="noopener" data-i18n="guideBtn">Get the guide — €7</a>
+        </div>
+      </div>
+      <div class="guide-card">
+        <img src="guia-lisboa.jpg" alt="Lisbon in One Day guide" loading="lazy">
+        <div class="guide-body">
+          <h3>Lisbon in One Day</h3>
+          <p data-i18n="guideLisbonText">Belém and Jerónimos in the morning, the Baixa and Chiado at lunch, Alfama and the castle at sunset.</p>
+          <a class="guide-btn" href="https://carlomofe.gumroad.com/l/lisbon-one-day" target="_blank" rel="noopener" data-i18n="guideBtn">Get the guide — €7</a>
+        </div>
+      </div>
+      <div class="guide-card">
+        <img src="guia-porto.jpg" alt="Porto in One Day guide" loading="lazy">
+        <div class="guide-body">
+          <h3>Porto in One Day</h3>
+          <p data-i18n="guidePortoText">Livraria Lello and Clérigos, the Ribeira, the Dom Luís I Bridge and a port wine cellar in Gaia.</p>
+          <a class="guide-btn" href="https://carlomofe.gumroad.com/l/porto-one-day" target="_blank" rel="noopener" data-i18n="guideBtn">Get the guide — €7</a>
+        </div>
+      </div>
+    </div>
+    <p class="guides-note" data-i18n="guidesNote">Instant download · each guide includes a 10% discount on my private tours</p>
+  </div>
+</section>
+<!-- ===== FIM GUIAS DIGITAIS ===== -->
 <section class="faq-section animate-on-scroll">
 <div style="text-align:center;margin-bottom:2.5rem;">
 <p class="section-label" data-i18n="faqLabel">Quick Answers</p>
@@ -3395,6 +3449,16 @@
             gallery10Caption:  "Cabo da Roca",
             gallery11Caption:  "Praça do Comércio, Lisbon",
             gallery12Caption:  "Palácio da Pena, Sintra",
+            // Self-guided guides
+            guidesKicker:     "Self-guided itineraries",
+            guidesTitle:      "Prefer to explore on your own?",
+            guidesIntro:      "My one-day routes, the same ones I use with my private clients, ready to follow by public transport. PDF + EPUB in English, Spanish and Italian.",
+            guideSintraText:  "Pena Palace, the Moorish Castle and Quinta da Regaleira, in the right order and with the right tickets.",
+            guideLisbonText:  "Belém and Jerónimos in the morning, the Baixa and Chiado at lunch, Alfama and the castle at sunset.",
+            guidePortoText:   "Livraria Lello and Clérigos, the Ribeira, the Dom Luís I Bridge and a port wine cellar in Gaia.",
+            guideBtn:         "Get the guide — €7",
+            guideSoon:        "Coming soon",
+            guidesNote:       "Instant download · each guide includes a 10% discount on my private tours",
             // Booking modal
             modalTitle:      "Reserve Your Tour",
             formName:        "Your Name",
@@ -3601,6 +3665,16 @@
             gallery10Caption:  "Cabo da Roca",
             gallery11Caption:  "Praça do Comércio, Lisboa",
             gallery12Caption:  "Palácio da Pena, Sintra",
+            // Guias autoguiados
+            guidesKicker:     "Itinerários autoguiados",
+            guidesTitle:      "Prefere explorar por conta própria?",
+            guidesIntro:      "Os meus percursos de um dia, os mesmos que faço com os meus clientes privados, prontos a seguir de transportes públicos. PDF + EPUB em inglês, espanhol e italiano.",
+            guideSintraText:  "Palácio da Pena, Castelo dos Mouros e Quinta da Regaleira, pela ordem certa e com os bilhetes certos.",
+            guideLisbonText:  "Belém e Jerónimos de manhã, Baixa e Chiado à hora de almoço, Alfama e o castelo ao pôr do sol.",
+            guidePortoText:   "Livraria Lello e Clérigos, a Ribeira, a Ponte D. Luís I e uma cave de vinho do Porto em Gaia.",
+            guideBtn:         "Comprar o guia — 7 €",
+            guideSoon:        "Em breve",
+            guidesNote:       "Download imediato · cada guia inclui 10% de desconto nos meus tours privados",
             // Booking modal
             modalTitle:      "Reservar Tour",
             formName:        "O Seu Nome",
@@ -3807,6 +3881,16 @@
             gallery10Caption:  "Cabo da Roca",
             gallery11Caption:  "Plaça del Comerç, Lisboa",
             gallery12Caption:  "Palacio da Pena, Sintra",
+            // Guías autoguiadas
+            guidesKicker:     "Itinerarios autoguiados",
+            guidesTitle:      "¿Prefieres explorar por tu cuenta?",
+            guidesIntro:      "Mis rutas de un día, las mismas que hago con mis clientes privados, listas para seguir en transporte público. PDF + EPUB en inglés, español e italiano.",
+            guideSintraText:  "Palacio da Pena, Castillo de los Moros y Quinta da Regaleira, en el orden correcto y con las entradas correctas.",
+            guideLisbonText:  "Belém y los Jerónimos por la mañana, la Baixa y el Chiado a mediodía, Alfama y el castillo al atardecer.",
+            guidePortoText:   "Livraria Lello y los Clérigos, la Ribeira, el puente Don Luis I y una bodega de oporto en Gaia.",
+            guideBtn:         "Comprar la guía — 7 €",
+            guideSoon:        "Muy pronto",
+            guidesNote:       "Descarga inmediata · cada guía incluye un 10% de descuento en mis tours privados",
             // Booking modal
             modalTitle:      "Reservar Tour",
             formName:        "Tu Nombre",
@@ -4013,6 +4097,16 @@
             gallery10Caption:  "Cabo da Roca",
             gallery11Caption:  "Praça do Comércio, Lisbona",
             gallery12Caption:  "Palazzo della Pena, Sintra",
+            // Guide fai da te
+            guidesKicker:     "Itinerari fai da te",
+            guidesTitle:      "Preferisci esplorare da solo?",
+            guidesIntro:      "I miei percorsi di un giorno, gli stessi che faccio con i miei clienti privati, pronti da seguire con i mezzi pubblici. PDF + EPUB in inglese, spagnolo e italiano.",
+            guideSintraText:  "Palazzo di Pena, Castello dei Mori e Quinta da Regaleira, nell'ordine giusto e con i biglietti giusti.",
+            guideLisbonText:  "Belém e i Jerónimos al mattino, la Baixa e il Chiado a pranzo, l'Alfama e il castello al tramonto.",
+            guidePortoText:   "Livraria Lello e i Clérigos, la Ribeira, il ponte Dom Luís I e una cantina del Porto a Gaia.",
+            guideBtn:         "Acquista la guida — 7 €",
+            guideSoon:        "In arrivo",
+            guidesNote:       "Download immediato · ogni guida include uno sconto del 10% sui miei tour privati",
             // Booking modal
             modalTitle:      "Prenota il Tour",
             formName:        "Il Tuo Nome",
