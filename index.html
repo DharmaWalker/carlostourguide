@@ -2334,6 +2334,7 @@
 <!-- Tour 2b: Lisbon Half Day - Essential Visits -->
 <!-- Tour 3: Fátima, Batalha, Óbidos & Nazaré -->
 <!-- Tour 4: Arrábida & Setúbal -->
+<!-- Tour 5: Évora & Alentejo -->
 <div class="tour-card animate-on-scroll">
 <div class="tour-header">
 <h3>'That Sintra Feeling!'</h3>
@@ -2632,6 +2633,81 @@
 </a>
 </div>
 <button class="btn-book" onclick="openBookingModal('arrabida')">
+<i class="fas fa-calendar-check"></i> <span data-i18n="bookBtn">Check Availability &amp; Book</span>
+</button>
+<p class="cancel-note"><i class="fas fa-shield-alt"></i> <span data-i18n="cancelNote">Free cancellation up to 48h — full deposit refund, no questions asked</span></p>
+<p class="book-whatsapp-note"><a href="https://wa.me/351933302031" rel="noopener noreferrer" target="_blank"><i class="fab fa-whatsapp"></i> <span data-i18n="bookWaNote">Questions? Chat with Carlos on WhatsApp</span></a></p>
+</div></div>
+</div><div class="tour-card animate-on-scroll">
+<div class="tour-header">
+<h3 data-i18n="evoraTitle">Évora &amp; Alentejo</h3>
+<div class="tour-subtitle"><i class="far fa-clock"></i> <span data-i18n="evoraSubtitle">8-9h • Premium Day Experience from Lisbon</span></div>
+</div>
+<div class="tour-body"><div class="tour-content">
+<p class="tour-description" data-i18n="evoraDesc">
+                        Travel into the heart of the Alentejo to discover Évora, a UNESCO World Heritage city where 2,000 years of history live side by side. We start among the standing stones of the Almendres Cromlech, one of the largest megalithic monuments in the Iberian Peninsula and older than Stonehenge. In Évora's walled centre we stand before the Roman Temple, climb onto the rooftop of the medieval Cathedral and enjoy a relaxed lunch of authentic Alentejo cuisine. In the afternoon we visit the unforgettable Chapel of Bones and stroll through Praça do Giraldo and the whitewashed lanes of the old town, with the option to end the day with a tasting of the region's celebrated wines.
+                    </p>
+<div class="tour-gallery-col"><div class="tour-gallery" data-gallery="evora">
+<div class="gallery-track">
+<div class="gallery-item" onclick="openLightbox('evora-templo.jpg','Templo Romano, Évora')">
+<img alt="Roman Temple of Évora" loading="lazy" src="evora-templo.jpg"/>
+<div class="gallery-label" data-i18n="evoraTemplo">Roman Temple</div>
+</div>
+<div class="gallery-item" onclick="openLightbox('evora-se.jpg','Sé de Évora')">
+<img alt="Évora Cathedral" loading="lazy" src="evora-se.jpg"/>
+<div class="gallery-label" data-i18n="evoraSe">Évora Cathedral</div>
+</div>
+<div class="gallery-item" onclick="openLightbox('evora-ossos.jpg','Capela dos Ossos')">
+<img alt="Chapel of Bones" loading="lazy" src="evora-ossos.jpg"/>
+<div class="gallery-label" data-i18n="evoraOssos">Chapel of Bones</div>
+</div>
+<div class="gallery-item" onclick="openLightbox('evora-almendres.jpg','Cromeleque dos Almendres')">
+<img alt="Almendres Cromlech" loading="lazy" src="evora-almendres.jpg"/>
+<div class="gallery-label" data-i18n="evoraAlmendres">Almendres Cromlech</div>
+</div>
+</div>
+<button aria-label="Previous" class="gallery-btn prev" onclick="galleryMove(this,-1)">‹</button>
+<button aria-label="Next" class="gallery-btn next" onclick="galleryMove(this,1)">›</button>
+<div class="gallery-dots"></div>
+</div></div><div class="tour-info-group">
+<div class="tour-info-title"><i class="fas fa-map-marked-alt"></i> <span data-i18n="highlights">Highlights</span></div>
+<p class="tour-locations" data-i18n="evoraHighlights">Almendres Cromlech, Roman Temple, Évora Cathedral, Chapel of Bones, Praça do Giraldo.</p>
+</div>
+<div class="tour-info-group" style="margin-bottom:1rem;">
+<button class="itinerary-toggle" onclick="toggleItinerary(this)">
+<span><i class="fas fa-clock"></i> <span data-i18n="viewItinerary">View Itinerary</span></span>
+<span class="toggle-arrow">▼</span>
+</button>
+<div class="itinerary-body">
+<ul class="itinerary-timeline">
+<li><span class="it-time">09:00</span><span class="it-dot"></span><span class="it-label"><span data-i18n="itPickup">Pick-up</span> — Lisboa</span></li>
+<li><span class="it-dot"></span><span class="it-label">Cromeleque dos Almendres <span data-i18n="itMegalithic">(Megalithic site)</span></span></li>
+<li><span class="it-dot"></span><span class="it-label">Templo Romano &amp; <span data-i18n="itEvoraSe">Cathedral rooftop (ticket paid separately)</span></span></li>
+<li><span class="it-dot"></span><span class="it-label"><span data-i18n="itAlentejoLunch">Lunch — traditional Alentejo cuisine</span></span></li>
+<li><span class="it-dot"></span><span class="it-label"><span data-i18n="itOssos">Chapel of Bones (ticket paid separately)</span></span></li>
+<li><span class="it-dot"></span><span class="it-label">Praça do Giraldo <span data-i18n="itOldTown">&amp; old town walk</span></span></li>
+<li><span class="it-dot"></span><span class="it-label"><span data-i18n="itWineTasting">Wine Tasting (paid separately)</span> — Alentejo (<span data-i18n="itOptional">Optional</span>)</span></li>
+<li><span class="it-time">18:00</span><span class="it-dot"></span><span class="it-label"><span data-i18n="itEnd">End of Tour</span> / <span data-i18n="itReturn">Return</span></span></li>
+</ul>
+</div>
+</div>
+<div class="tour-info-group">
+<div class="tour-info-title"><i class="fas fa-tag"></i> <span data-i18n="pricingLabel">Total Price per Group — not per person</span></div>
+<div class="tour-pricing">
+<div class="price-box" data-avg="2" data-price="410" onclick="showPerPerson(this,410,2)"><span class="price-pax" data-i18n="pax2">1-2 Pax</span><span class="price-val">410€</span></div>
+<div class="price-box" data-avg="4" data-price="450" onclick="showPerPerson(this,450,4)"><span class="price-pax" data-i18n="pax4">3-4 Pax</span><span class="price-val">450€</span></div>
+<div class="price-box" data-avg="6" data-price="490" onclick="showPerPerson(this,490,6)"><span class="price-pax" data-i18n="pax6">5-6 Pax</span><span class="price-val">490€</span></div>
+</div>
+<div class="per-person-hint" id="hint-evora"></div>
+</div>
+<div class="price-box-group-wrap">
+<a class="price-box-group" href="https://wa.me/351933302031" rel="noopener noreferrer" target="_blank">
+<span class="wa-icon">🟢</span>
+<span data-i18n="pax7plus">7+ Pax</span>
+<span class="pax7-text">— <span data-i18n="pax7quote">Ask for quote</span></span>
+</a>
+</div>
+<button class="btn-book" onclick="openBookingModal('evora')">
 <i class="fas fa-calendar-check"></i> <span data-i18n="bookBtn">Check Availability &amp; Book</span>
 </button>
 <p class="cancel-note"><i class="fas fa-shield-alt"></i> <span data-i18n="cancelNote">Free cancellation up to 48h — full deposit refund, no questions asked</span></p>
@@ -3342,6 +3418,15 @@
             arrabidaSerra:      "Arrábida Natural Park",
             arrabidaLapa:       "Lapa de Santa Margarida",
             arrabidaChocos:     "Fried Cuttlefish · Setúbal",
+            // Évora
+            evoraTitle:         "Évora & Alentejo",
+            evoraSubtitle:      "8-9h · Premium Day Experience from Lisbon",
+            evoraDesc:          "Travel into the heart of the Alentejo to discover Évora, a UNESCO World Heritage city where 2,000 years of history live side by side. We start among the standing stones of the Almendres Cromlech, one of the largest megalithic monuments in the Iberian Peninsula and older than Stonehenge. In Évora's walled centre we stand before the Roman Temple, climb onto the rooftop of the medieval Cathedral and enjoy a relaxed lunch of authentic Alentejo cuisine. In the afternoon we visit the unforgettable Chapel of Bones and stroll through Praça do Giraldo and the whitewashed lanes of the old town, with the option to end the day with a tasting of the region's celebrated wines.",
+            evoraHighlights:    "Almendres Cromlech, Roman Temple, Évora Cathedral, Chapel of Bones, Praça do Giraldo.",
+            evoraTemplo:        "Roman Temple",
+            evoraSe:            "Évora Cathedral",
+            evoraOssos:         "Chapel of Bones",
+            evoraAlmendres:     "Almendres Cromlech",
             // Half Day Tours
             sintraHalfTitle:    "Sintra Half Day - Essential Visits",
             sintraHalfSubtitle: "4h · Half Day Experience",
@@ -3380,6 +3465,11 @@
             itScenic:        "(Panoramic Drive)",
             itWineTasting:   "Wine Tasting (paid separately)",
             itChocosStop:    "Stop at a local tasca for cuttlefish tasting (paid separately)",
+            itMegalithic:    "(Megalithic site)",
+            itEvoraSe:       "Cathedral rooftop (ticket paid separately)",
+            itAlentejoLunch: "Lunch — traditional Alentejo cuisine",
+            itOssos:         "Chapel of Bones (ticket paid separately)",
+            itOldTown:       "& old town walk",
             bookWaNote:      "Not ready to book? Ask Carlos anything on WhatsApp",
             multiTourSaved:       "You save",
             multiTourTitle:       "Book more, save more!",
@@ -3559,6 +3649,15 @@
             arrabidaSerra:      "Parque Natural da Arrábida",
             arrabidaLapa:       "Lapa de Santa Margarida",
             arrabidaChocos:     "Chocos Fritos · Setúbal",
+            // Évora
+            evoraTitle:         "Évora & Alentejo",
+            evoraSubtitle:      "8-9h · Experiência Premium a partir de Lisboa",
+            evoraDesc:          "Viaje até ao coração do Alentejo para descobrir Évora, cidade Património Mundial da UNESCO onde 2.000 anos de história convivem lado a lado. Começamos entre os menires do Cromeleque dos Almendres, um dos maiores monumentos megalíticos da Península Ibérica e mais antigo do que Stonehenge. No centro histórico amuralhado, admiramos o Templo Romano, subimos aos terraços da Sé medieval e fazemos uma pausa para almoçar a autêntica cozinha alentejana. À tarde visitamos a inesquecível Capela dos Ossos e passeamos pela Praça do Giraldo e pelas ruelas caiadas da cidade velha, com a opção de terminar o dia com uma prova dos afamados vinhos da região.",
+            evoraHighlights:    "Cromeleque dos Almendres, Templo Romano, Sé de Évora, Capela dos Ossos, Praça do Giraldo.",
+            evoraTemplo:        "Templo Romano",
+            evoraSe:            "Sé de Évora",
+            evoraOssos:         "Capela dos Ossos",
+            evoraAlmendres:     "Cromeleque dos Almendres",
             // Half Day Tours
             sintraHalfTitle:    "Sintra Meio Dia - Visitas Essenciais",
             sintraHalfSubtitle: "4h · Experiência de Meio Dia",
@@ -3596,6 +3695,11 @@
             itScenic:        "(Drive Panorâmico)",
             itWineTasting:   "Prova de Vinhos (paga à parte)",
             itChocosStop:    "Paragem numa tasca local para degustação de chocos (paga à parte)",
+            itMegalithic:    "(Sítio megalítico)",
+            itEvoraSe:       "Terraços da Sé (bilhete pago à parte)",
+            itAlentejoLunch: "Almoço — cozinha tradicional alentejana",
+            itOssos:         "Capela dos Ossos (bilhete pago à parte)",
+            itOldTown:       "& passeio pela cidade velha",
             bookWaNote:      "Dúvidas? Fala com o Carlos no WhatsApp",
             multiTourSaved:       "Poupa",
             multiTourTitle:       "Combina tours e poupa!",
@@ -3775,6 +3879,15 @@
             arrabidaSerra:      "Parque Natural de Arrábida",
             arrabidaLapa:       "Lapa de Santa Margarida",
             arrabidaChocos:     "Chocos Fritos · Setúbal",
+            // Évora
+            evoraTitle:         "Évora & Alentejo",
+            evoraSubtitle:      "8-9h · Experiencia Premium desde Lisboa",
+            evoraDesc:          "Viaje al corazón del Alentejo para descubrir Évora, ciudad Patrimonio de la Humanidad de la UNESCO donde conviven 2.000 años de historia. Empezamos entre los menhires del Crómlech de los Almendres, uno de los mayores monumentos megalíticos de la Península Ibérica y más antiguo que Stonehenge. En el centro histórico amurallado contemplamos el Templo Romano, subimos a las terrazas de la Catedral medieval y disfrutamos de un almuerzo con la auténtica cocina alentejana. Por la tarde visitamos la inolvidable Capilla de los Huesos y paseamos por la Praça do Giraldo y las callejuelas encaladas del casco antiguo, con la opción de terminar el día con una cata de los célebres vinos de la región.",
+            evoraHighlights:    "Crómlech de los Almendres, Templo Romano, Catedral de Évora, Capilla de los Huesos, Praça do Giraldo.",
+            evoraTemplo:        "Templo Romano",
+            evoraSe:            "Catedral de Évora",
+            evoraOssos:         "Capilla de los Huesos",
+            evoraAlmendres:     "Crómlech de los Almendres",
             // Half Day Tours
             sintraHalfTitle:    "Sintra Medio Día - Visitas Esenciales",
             sintraHalfSubtitle: "4h · Experiencia de Medio Día",
@@ -3812,6 +3925,11 @@
             itScenic:        "(Drive Panorámico)",
             itWineTasting:   "Cata de Vinos (se paga aparte)",
             itChocosStop:    "Parada en una tasca local para degustar chocos (sepias fritas, se paga aparte)",
+            itMegalithic:    "(Sitio megalítico)",
+            itEvoraSe:       "Terrazas de la Catedral (entrada aparte)",
+            itAlentejoLunch: "Almuerzo — cocina tradicional alentejana",
+            itOssos:         "Capilla de los Huesos (entrada aparte)",
+            itOldTown:       "y paseo por el casco antiguo",
             bookWaNote:      "¿Preguntas? Escríbele a Carlos en WhatsApp",
             multiTourSaved:       "Ahorras",
             multiTourTitle:       "¡Combina tours y ahorra!",
@@ -3991,6 +4109,15 @@
             arrabidaSerra:      "Parco Naturale dell'Arrábida",
             arrabidaLapa:       "Lapa de Santa Margarida",
             arrabidaChocos:     "Seppie Fritte · Setúbal",
+            // Évora
+            evoraTitle:         "Évora & Alentejo",
+            evoraSubtitle:      "8-9h · Esperienza Premium da Lisbona",
+            evoraDesc:          "Un viaggio nel cuore dell'Alentejo alla scoperta di Évora, città Patrimonio dell'Umanità UNESCO dove convivono 2.000 anni di storia. Iniziamo tra i menhir del Cromlech degli Almendres, uno dei più grandi monumenti megalitici della Penisola Iberica e più antico di Stonehenge. Nel centro storico cinto da mura ammiriamo il Tempio Romano, saliamo sulle terrazze della Cattedrale medievale e ci concediamo un pranzo con l'autentica cucina alentejana. Nel pomeriggio visitiamo l'indimenticabile Cappella delle Ossa e passeggiamo per Praça do Giraldo e i vicoli imbiancati della città vecchia, con la possibilità di concludere la giornata con una degustazione dei celebri vini della regione.",
+            evoraHighlights:    "Cromlech degli Almendres, Tempio Romano, Cattedrale di Évora, Cappella delle Ossa, Praça do Giraldo.",
+            evoraTemplo:        "Tempio Romano",
+            evoraSe:            "Cattedrale di Évora",
+            evoraOssos:         "Cappella delle Ossa",
+            evoraAlmendres:     "Cromlech degli Almendres",
             // Half Day Tours
             sintraHalfTitle:    "Sintra Mezza Giornata - Visite Essenziali",
             sintraHalfSubtitle: "4h · Esperienza di Mezza Giornata",
@@ -4028,6 +4155,11 @@
             itScenic:        "(Drive Panoramico)",
             itWineTasting:   "Degustazione di Vini (a pagamento)",
             itChocosStop:    "Sosta in una tasca locale per degustare chocos (seppie fritte, a pagamento)",
+            itMegalithic:    "(Sito megalitico)",
+            itEvoraSe:       "Terrazze della Cattedrale (biglietto a parte)",
+            itAlentejoLunch: "Pranzo — cucina tradizionale alentejana",
+            itOssos:         "Cappella delle Ossa (biglietto a parte)",
+            itOldTown:       "e passeggiata nella città vecchia",
             bookWaNote:      "Domande? Chatta con Carlos su WhatsApp",
             multiTourSaved:       "Risparmi",
             multiTourTitle:       "Prenota di più, risparmia di più!",
@@ -4745,6 +4877,15 @@
             duration: "6-7 hours (Full Day)",
             waText: (name, date, pax, total, dep) =>
                 `Hello Carlos! I'd like to book the *Arrábida & Setúbal Tour*.\n\n👤 Name: ${name}\n📅 Date: ${date}\n👥 Group: ${pax} people\n💶 Tour Total: €${total}\n✅ Deposit paid: €${dep} via PayPal\n\nPlease confirm my reservation. Thank you!`
+        },
+        evora: {
+            name: "Évora & Alentejo",
+            prices: { 2: 410, 4: 450, 6: 490 },
+            deposits: { 2: 50, 4: 50, 6: 50 },
+            pickup: "Your hotel in Lisbon",
+            duration: "8-9 hours (Full Day)",
+            waText: (name, date, pax, total, dep) =>
+                `Hello Carlos! I'd like to book the *Évora & Alentejo Tour*.\n\n👤 Name: ${name}\n📅 Date: ${date}\n👥 Group: ${pax} people\n💶 Tour Total: €${total}\n✅ Deposit paid: €${dep} via PayPal\n\nPlease confirm my reservation. Thank you!`
         }
     };
 
@@ -4753,7 +4894,7 @@
     const CARLOS_EMAIL  = 'carlosmofigueiredo@gmail.com';
 
     // ── PACK_MULTI_TOUR cart ──────────────────────────────────────────────────
-    const ELIGIBLE_TOURS = ['sintra', 'sintraHalf', 'lisbon', 'lisbonHalf', 'fatima', 'arrabida']; // all tours eligible
+    const ELIGIBLE_TOURS = ['sintra', 'sintraHalf', 'lisbon', 'lisbonHalf', 'fatima', 'arrabida', 'evora']; // all tours eligible
 
     // Cart persists in localStorage so it survives page reloads
     function getCart() {
@@ -5413,10 +5554,10 @@
                 it: ['tour','tours','disponibile','disponibili','offrire','opzioni','pacchetti','scelta','cosa offre','che tour','visitare','vedere','fare']
             },
             answer: {
-                en: "I offer 4 signature tours from Lisbon:\n\n🏰 <b>Sintra Tour</b> (7-8h) — Pena Palace, Quinta da Regaleira, Cabo da Roca, Cascais\n🏙️ <b>Lisbon Tour</b> (6-7h) — Belém, Alfama, São Jorge Castle, Praça do Comércio\n⛪ <b>Fátima, Batalha, Óbidos & Nazaré</b> (8-10h) — Spiritual & historic full-day\n🍷 <b>Arrábida & Setúbal</b> (6-7h) — Wine tasting, hidden beach, cave & fried cuttlefish\n\nI also build <b>Custom Tours</b> across Portugal & Spain! Use the map on the page to plan yours.",
-                pt: "Ofereço 4 tours exclusivos a partir de Lisboa:\n\n🏰 <b>Tour de Sintra</b> (7-8h) — Palácio da Pena, Quinta da Regaleira, Cabo da Roca, Cascais\n🏙️ <b>Tour de Lisboa</b> (6-7h) — Belém, Alfama, Castelo de São Jorge, Praça do Comércio\n⛪ <b>Fátima, Batalha, Óbidos & Nazaré</b> (8-10h) — Dia completo espiritual e histórico\n🍷 <b>Arrábida & Setúbal</b> (6-7h) — Vinhos, praia escondida, gruta e chocos fritos\n\nTambém organizo <b>Tours Personalizados</b> em Portugal e Espanha! Use o mapa na página.",
-                es: "Ofrezco 4 tours exclusivos desde Lisboa:\n\n🏰 <b>Tour Sintra</b> (7-8h) — Palacio da Pena, Quinta da Regaleira, Cabo da Roca, Cascais\n🏙️ <b>Tour Lisboa</b> (6-7h) — Belém, Alfama, Castillo de San Jorge, Praça do Comércio\n⛪ <b>Fátima, Batalha, Óbidos & Nazaré</b> (8-10h) — Jornada completa espiritual e histórica\n🍷 <b>Arrábida & Setúbal</b> (6-7h) — Vinos, playa escondida, cueva y chocos fritos\n\n¡También organizo <b>Tours Personalizados</b> por Portugal y España! Usa el mapa en la página.",
-                it: "Offro 4 tour esclusivi da Lisbona:\n\n🏰 <b>Tour Sintra</b> (7-8h) — Palazzo della Pena, Quinta da Regaleira, Cabo da Roca, Cascais\n🏙️ <b>Tour Lisbona</b> (6-7h) — Belém, Alfama, Castello di San Giorgio, Praça do Comércio\n⛪ <b>Fátima, Batalha, Óbidos & Nazaré</b> (8-10h) — Giornata intera spirituale e storica\n🍷 <b>Arrábida & Setúbal</b> (6-7h) — Vini, spiaggia nascosta, grotta e seppie fritte\n\nOrganizzi anche <b>Tour Personalizzati</b> in Portogallo e Spagna! Usa la mappa nella pagina."
+                en: "I offer 5 signature tours from Lisbon:\n\n🏰 <b>Sintra Tour</b> (7-8h) — Pena Palace, Quinta da Regaleira, Cabo da Roca, Cascais\n🏙️ <b>Lisbon Tour</b> (6-7h) — Belém, Alfama, São Jorge Castle, Praça do Comércio\n⛪ <b>Fátima, Batalha, Óbidos & Nazaré</b> (8-10h) — Spiritual & historic full-day\n🍷 <b>Arrábida & Setúbal</b> (6-7h) — Wine tasting, hidden beach, cave & fried cuttlefish\n🏛️ <b>Évora & Alentejo</b> (8-9h) — Roman Temple, Cathedral, Chapel of Bones, Almendres Cromlech\n\nI also build <b>Custom Tours</b> across Portugal & Spain! Use the map on the page to plan yours.",
+                pt: "Ofereço 5 tours exclusivos a partir de Lisboa:\n\n🏰 <b>Tour de Sintra</b> (7-8h) — Palácio da Pena, Quinta da Regaleira, Cabo da Roca, Cascais\n🏙️ <b>Tour de Lisboa</b> (6-7h) — Belém, Alfama, Castelo de São Jorge, Praça do Comércio\n⛪ <b>Fátima, Batalha, Óbidos & Nazaré</b> (8-10h) — Dia completo espiritual e histórico\n🍷 <b>Arrábida & Setúbal</b> (6-7h) — Vinhos, praia escondida, gruta e chocos fritos\n🏛️ <b>Évora & Alentejo</b> (8-9h) — Templo Romano, Sé, Capela dos Ossos, Cromeleque dos Almendres\n\nTambém organizo <b>Tours Personalizados</b> em Portugal e Espanha! Use o mapa na página.",
+                es: "Ofrezco 5 tours exclusivos desde Lisboa:\n\n🏰 <b>Tour Sintra</b> (7-8h) — Palacio da Pena, Quinta da Regaleira, Cabo da Roca, Cascais\n🏙️ <b>Tour Lisboa</b> (6-7h) — Belém, Alfama, Castillo de San Jorge, Praça do Comércio\n⛪ <b>Fátima, Batalha, Óbidos & Nazaré</b> (8-10h) — Jornada completa espiritual e histórica\n🍷 <b>Arrábida & Setúbal</b> (6-7h) — Vinos, playa escondida, cueva y chocos fritos\n🏛️ <b>Évora & Alentejo</b> (8-9h) — Templo Romano, Catedral, Capilla de los Huesos, Crómlech de los Almendres\n\n¡También organizo <b>Tours Personalizados</b> por Portugal y España! Usa el mapa en la página.",
+                it: "Offro 5 tour esclusivi da Lisbona:\n\n🏰 <b>Tour Sintra</b> (7-8h) — Palazzo della Pena, Quinta da Regaleira, Cabo da Roca, Cascais\n🏙️ <b>Tour Lisbona</b> (6-7h) — Belém, Alfama, Castello di San Giorgio, Praça do Comércio\n⛪ <b>Fátima, Batalha, Óbidos & Nazaré</b> (8-10h) — Giornata intera spirituale e storica\n🍷 <b>Arrábida & Setúbal</b> (6-7h) — Vini, spiaggia nascosta, grotta e seppie fritte\n🏛️ <b>Évora & Alentejo</b> (8-9h) — Tempio Romano, Cattedrale, Cappella delle Ossa, Cromlech degli Almendres\n\nOrganizzi anche <b>Tour Personalizzati</b> in Portogallo e Spagna! Usa la mappa nella pagina."
             }
         },
         {
@@ -5473,10 +5614,10 @@
                 it: ['prezzo','prezzi','costo','quanto','caro','economico','tariffa','sconto','promozione','offerta','promo']
             },
             answer: {
-                en: "Here's a quick price overview for private group tours:\n\n🏰 <b>Sintra</b> (7-8h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 pax)\n🏙️ <b>Lisbon</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pax)\n⛪ <b>Fátima & Beyond</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 pax)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pax)\n🗺️ <b>Custom Tours</b>: €260 flat (up to ~300km) or €1.25/km\n\nAll prices include private van + guide + hotel pick-up.",
-                pt: "Resumo dos preços para grupos privados:\n\n🏰 <b>Sintra</b> (7-8h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 pessoas)\n🏙️ <b>Lisboa</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pessoas)\n⛪ <b>Fátima e Mais</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 pessoas)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pessoas)\n🗺️ <b>Tours Personalizados</b>: €260 fixo (até ~300km) ou €1,25/km\n\nTodos incluem van privada + guia + recolha no hotel.",
-                es: "Resumen de precios para grupos privados:\n\n🏰 <b>Sintra</b> (7-8h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 personas)\n🏙️ <b>Lisboa</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 personas)\n⛪ <b>Fátima y Más</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 personas)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 personas)\n🗺️ <b>Tours Personalizados</b>: €260 fijo (hasta ~300km) o €1,25/km\n\nTodos incluyen furgoneta privada + guía + recogida en hotel.",
-                it: "Riepilogo prezzi per gruppi privati:\n\n🏰 <b>Sintra</b> (7-8h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 persone)\n🏙️ <b>Lisbona</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 persone)\n⛪ <b>Fátima e Altro</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 persone)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 persone)\n🗺️ <b>Tour Personalizzati</b>: €260 fisso (fino a ~300km) o €1,25/km\n\nTutti includono van privato + guida + prelievo in hotel."
+                en: "Here's a quick price overview for private group tours:\n\n🏰 <b>Sintra</b> (7-8h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 pax)\n🏙️ <b>Lisbon</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pax)\n⛪ <b>Fátima & Beyond</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 pax)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pax)\n🏛️ <b>Évora & Alentejo</b> (8-9h): €410 / €450 / €490 (1-2 / 3-4 / 5-6 pax)\n🗺️ <b>Custom Tours</b>: €260 flat (up to ~300km) or €1.25/km\n\nAll prices include private van + guide + hotel pick-up.",
+                pt: "Resumo dos preços para grupos privados:\n\n🏰 <b>Sintra</b> (7-8h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 pessoas)\n🏙️ <b>Lisboa</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pessoas)\n⛪ <b>Fátima e Mais</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 pessoas)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 pessoas)\n🏛️ <b>Évora & Alentejo</b> (8-9h): €410 / €450 / €490 (1-2 / 3-4 / 5-6 pessoas)\n🗺️ <b>Tours Personalizados</b>: €260 fixo (até ~300km) ou €1,25/km\n\nTodos incluem van privada + guia + recolha no hotel.",
+                es: "Resumen de precios para grupos privados:\n\n🏰 <b>Sintra</b> (7-8h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 personas)\n🏙️ <b>Lisboa</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 personas)\n⛪ <b>Fátima y Más</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 personas)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 personas)\n🏛️ <b>Évora & Alentejo</b> (8-9h): €410 / €450 / €490 (1-2 / 3-4 / 5-6 personas)\n🗺️ <b>Tours Personalizados</b>: €260 fijo (hasta ~300km) o €1,25/km\n\nTodos incluyen furgoneta privada + guía + recogida en hotel.",
+                it: "Riepilogo prezzi per gruppi privati:\n\n🏰 <b>Sintra</b> (7-8h): €270 / €290 / €310 (1-2 / 3-4 / 5-6 persone)\n🏙️ <b>Lisbona</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 persone)\n⛪ <b>Fátima e Altro</b> (8-10h): €430 / €470 / €510 (1-2 / 3-4 / 5-6 persone)\n🍷 <b>Arrábida & Setúbal</b> (6-7h): €290 / €330 / €350 (1-2 / 3-4 / 5-6 persone)\n🏛️ <b>Évora & Alentejo</b> (8-9h): €410 / €450 / €490 (1-2 / 3-4 / 5-6 persone)\n🗺️ <b>Tour Personalizzati</b>: €260 fisso (fino a ~300km) o €1,25/km\n\nTutti includono van privato + guida + prelievo in hotel."
             }
         },
         {
@@ -5492,6 +5633,21 @@
                 pt: "🍷 <b>Tour Arrábida & Setúbal</b> (6-7h a partir de Lisboa)\nVisitas: Degustação de Vinhos · Portinho da Arrábida · Lapa de Santa Margarida · Serra da Arrábida · Setúbal\n\n<b>Preços (grupo privado):</b>\n• 1-2 pessoas → €290\n• 3-4 pessoas → €330\n• 5-6 pessoas → €350\n\nInclui: van privada + guia + recolha no hotel. Não são precisos bilhetes de monumentos. A prova de vinhos e os chocos são pagos à parte.",
                 es: "🍷 <b>Tour Arrábida & Setúbal</b> (6-7h desde Lisboa)\nVisitas: Cata de Vinos · Portinho da Arrábida · Lapa de Santa Margarida · Serra da Arrábida · Setúbal\n\n<b>Precios (grupo privado):</b>\n• 1-2 personas → €290\n• 3-4 personas → €330\n• 5-6 personas → €350\n\nIncluye: furgoneta privada + guía + recogida en hotel. No se necesitan entradas a monumentos. La cata de vinos y los chocos se pagan aparte.",
                 it: "🍷 <b>Tour Arrábida & Setúbal</b> (6-7h da Lisbona)\nVisite: Degustazione Vini · Portinho da Arrábida · Lapa de Santa Margarida · Serra da Arrábida · Setúbal\n\n<b>Prezzi (gruppo privato):</b>\n• 1-2 persone → €290\n• 3-4 persone → €330\n• 5-6 persone → €350\n\nInclude: van privato + guida + prelievo in hotel. Nessun biglietto per monumenti. Degustazione di vini e chocos si pagano a parte."
+            }
+        },
+        {
+            id: 'evora_price',
+            keywords: {
+                en: ['evora','évora','alentejo','roman temple','chapel of bones','bones','almendres','cromlech','megalithic','stones','unesco'],
+                pt: ['evora','évora','alentejo','templo romano','capela dos ossos','ossos','almendres','cromeleque','megalítico','menires','unesco'],
+                es: ['evora','évora','alentejo','templo romano','capilla de los huesos','huesos','almendres','crómlech','megalítico','menhires','unesco'],
+                it: ['evora','évora','alentejo','tempio romano','cappella delle ossa','ossa','almendres','cromlech','megalitico','menhir','unesco']
+            },
+            answer: {
+                en: "🏛️ <b>Évora & Alentejo Tour</b> (8-9h from Lisbon)\nVisits: Almendres Cromlech · Roman Temple · Évora Cathedral · Chapel of Bones · Praça do Giraldo\n\n<b>Prices (private group):</b>\n• 1-2 pax → €410\n• 3-4 pax → €450\n• 5-6 pax → €490\n\nIncludes: private van + guide + hotel pick-up. Cathedral and Chapel of Bones tickets, lunch and the optional wine tasting are paid separately.",
+                pt: "🏛️ <b>Tour Évora & Alentejo</b> (8-9h a partir de Lisboa)\nVisitas: Cromeleque dos Almendres · Templo Romano · Sé de Évora · Capela dos Ossos · Praça do Giraldo\n\n<b>Preços (grupo privado):</b>\n• 1-2 pessoas → €410\n• 3-4 pessoas → €450\n• 5-6 pessoas → €490\n\nInclui: van privada + guia + recolha no hotel. Os bilhetes da Sé e da Capela dos Ossos, o almoço e a prova de vinhos opcional são pagos à parte.",
+                es: "🏛️ <b>Tour Évora & Alentejo</b> (8-9h desde Lisboa)\nVisitas: Crómlech de los Almendres · Templo Romano · Catedral de Évora · Capilla de los Huesos · Praça do Giraldo\n\n<b>Precios (grupo privado):</b>\n• 1-2 personas → €410\n• 3-4 personas → €450\n• 5-6 personas → €490\n\nIncluye: furgoneta privada + guía + recogida en hotel. Las entradas de la Catedral y la Capilla de los Huesos, el almuerzo y la cata de vinos opcional se pagan aparte.",
+                it: "🏛️ <b>Tour Évora & Alentejo</b> (8-9h da Lisbona)\nVisite: Cromlech degli Almendres · Tempio Romano · Cattedrale di Évora · Cappella delle Ossa · Praça do Giraldo\n\n<b>Prezzi (gruppo privato):</b>\n• 1-2 persone → €410\n• 3-4 persone → €450\n• 5-6 persone → €490\n\nInclude: van privato + guida + prelievo in hotel. I biglietti della Cattedrale e della Cappella delle Ossa, il pranzo e la degustazione di vini facoltativa sono a parte."
             }
         },
         {
@@ -5692,16 +5848,16 @@
         {
             id: 'custom_tour',
             keywords: {
-                en: ['custom','customize','own tour','build','create','spain','espanha','porto','algarve','evora','braga','private','tailored','personalised'],
-                pt: ['personalizado','personalizar','criar','espanha','porto','algarve','évora','braga','privado','à medida'],
-                es: ['personalizado','personalizar','crear','españa','porto','algarve','évora','braga','privado','a medida'],
-                it: ['personalizzato','personalizzare','creare','spagna','porto','algarve','évora','braga','privato','su misura']
+                en: ['custom','customize','own tour','build','create','spain','espanha','porto','algarve','coimbra','braga','private','tailored','personalised'],
+                pt: ['personalizado','personalizar','criar','espanha','porto','algarve','coimbra','braga','privado','à medida'],
+                es: ['personalizado','personalizar','crear','españa','porto','algarve','coimbra','braga','privado','a medida'],
+                it: ['personalizzato','personalizzare','creare','spagna','porto','algarve','coimbra','braga','privato','su misura']
             },
             answer: {
-                en: "🗺️ <b>Custom Tours — Build Your Own!</b>\n\nI operate across all of Portugal and Spain. Use the <b>interactive map</b> on this page to select your destinations and get an instant price estimate.\n\n<b>Pricing:</b>\n• Routes up to ~300km: €260 flat rate\n• Longer routes: €1.25/km from Carcavelos\n\nPopular destinations: Porto, Évora, Algarve, Braga, Guimarães, Sevilla, Madrid and more!",
-                pt: "🗺️ <b>Tours Personalizados — Crie o Seu!</b>\n\nOpero em todo Portugal e Espanha. Use o <b>mapa interactivo</b> nesta página para seleccionar os seus destinos e obter uma estimativa de preço imediata.\n\n<b>Preços:</b>\n• Rotas até ~300km: €260 fixo\n• Rotas mais longas: €1,25/km a partir de Carcavelos\n\nDestinos populares: Porto, Évora, Algarve, Braga, Guimarães, Sevilha, Madrid e mais!",
-                es: "🗺️ <b>Tours Personalizados — ¡Crea el Tuyo!</b>\n\nOpero en todo Portugal y España. Usa el <b>mapa interactivo</b> en esta página para seleccionar tus destinos y obtener un presupuesto estimado al instante.\n\n<b>Precios:</b>\n• Rutas hasta ~300km: €260 fijo\n• Rutas más largas: €1,25/km desde Carcavelos\n\nDestinos populares: Porto, Évora, Algarve, Braga, Guimarães, Sevilla, Madrid y más.",
-                it: "🗺️ <b>Tour Personalizzati — Costruisci il Tuo!</b>\n\nOpero in tutto il Portogallo e la Spagna. Usa la <b>mappa interattiva</b> su questa pagina per selezionare le tue destinazioni e ottenere un preventivo istantaneo.\n\n<b>Prezzi:</b>\n• Percorsi fino a ~300km: €260 fisso\n• Percorsi più lunghi: €1,25/km da Carcavelos\n\nDestinazioni popolari: Porto, Évora, Algarve, Braga, Guimarães, Siviglia, Madrid e altro!"
+                en: "🗺️ <b>Custom Tours — Build Your Own!</b>\n\nI operate across all of Portugal and Spain. Use the <b>interactive map</b> on this page to select your destinations and get an instant price estimate.\n\n<b>Pricing:</b>\n• Routes up to ~300km: €260 flat rate\n• Longer routes: €1.25/km from Carcavelos\n\nPopular destinations: Porto, Coimbra, Algarve, Braga, Guimarães, Sevilla, Madrid and more!",
+                pt: "🗺️ <b>Tours Personalizados — Crie o Seu!</b>\n\nOpero em todo Portugal e Espanha. Use o <b>mapa interactivo</b> nesta página para seleccionar os seus destinos e obter uma estimativa de preço imediata.\n\n<b>Preços:</b>\n• Rotas até ~300km: €260 fixo\n• Rotas mais longas: €1,25/km a partir de Carcavelos\n\nDestinos populares: Porto, Coimbra, Algarve, Braga, Guimarães, Sevilha, Madrid e mais!",
+                es: "🗺️ <b>Tours Personalizados — ¡Crea el Tuyo!</b>\n\nOpero en todo Portugal y España. Usa el <b>mapa interactivo</b> en esta página para seleccionar tus destinos y obtener un presupuesto estimado al instante.\n\n<b>Precios:</b>\n• Rutas hasta ~300km: €260 fijo\n• Rutas más largas: €1,25/km desde Carcavelos\n\nDestinos populares: Porto, Coimbra, Algarve, Braga, Guimarães, Sevilla, Madrid y más.",
+                it: "🗺️ <b>Tour Personalizzati — Costruisci il Tuo!</b>\n\nOpero in tutto il Portogallo e la Spagna. Usa la <b>mappa interattiva</b> su questa pagina per selezionare le tue destinazioni e ottenere un preventivo istantaneo.\n\n<b>Prezzi:</b>\n• Percorsi fino a ~300km: €260 fisso\n• Percorsi più lunghi: €1,25/km da Carcavelos\n\nDestinazioni popolari: Porto, Coimbra, Algarve, Braga, Guimarães, Siviglia, Madrid e altro!"
             }
         },
         {
